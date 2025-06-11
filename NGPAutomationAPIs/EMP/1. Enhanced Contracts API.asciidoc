@@ -10,8 +10,8 @@ Allows EMPs to view tariff and pricing details linked to EVSE Groups for all act
 
 Gives EMPs better visibility into the cost structure of their subscribed offers, allowing them to optimize margins, adjust pricing strategies, and offer more accurate prices to EV drivers in their mobile apps.
 
-[[EnhancedContractsEndpoints]]
-=== Enhanced Contracts GET Endpoints:
+[[Endpoints]]
+=== GET Endpoints:
 
 - QA env: https://service-qa.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
 - PROD env: https://service.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
@@ -21,13 +21,13 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 
 [%header]
 |====
-|    Name    |    Data Type    |    Description    |    Mandatory/Omit
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
 |    providerId    |    string    |    EMP Id    |    M
 |    operatorId    |    string    |    CPO Id    |    M
 |====
 
-[[EnhancedContractsResponseBody]]
-=== Enhanced Contracts Response Body
+[[ResponseBody]]
+=== Response Body
 
 [%header]
 |===
@@ -187,10 +187,10 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    M/O
-|    Type |    string |    Pricing components type |    M
-|    ReferenceUnit |    string |    Pricing components reference unit |    M
-|    Cost |    number |    Pricing components cost |    M
-|    FeeInitiated |    string |    Pricing components parking fee initialization type |    O
-|    GracePeriod |    integer |    Pricing components grace period |    O
+|    Type |    string |    Pricing component type |    M
+|    ReferenceUnit |    string |    Pricing component reference unit |    M
+|    Cost |    number |    Pricing component cost |    M
+|    FeeInitiated |    string |    Pricing component parking fee initialization type |    O
+|    GracePeriod |    integer |    Pricing component grace period |    O
 |====
 

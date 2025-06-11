@@ -14,7 +14,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 3. Upload Terms & Conditions (PDF) API:
 - Upload “Terms and Conditions” pdf document for to be created service offer 
 4. Create NGP Service Offer API:
-- Endpoint to define and publish a new NGP service offer
+- Enables CPOs to programmatically create new NGP service offers including detailed tariff, pricing, and subscription information.
 5. Update Pricing for NGP Offers API:
 - CPO users can update pricing for NGP Unlimited Offers.
 6. Extract Offer & Subscription Details API:

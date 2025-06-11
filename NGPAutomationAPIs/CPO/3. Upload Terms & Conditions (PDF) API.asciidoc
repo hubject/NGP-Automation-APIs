@@ -11,8 +11,8 @@ Upload “Terms and Conditions” pdf document for to be created service offer.
 To attach a file to a service offer is not mandatory.
 The T&C API is only needed if CPO wants to attach the document for a offer that wants to create.
 
-[[UploadTermsAndConditionsEndpoints]]
-=== Upload Terms & Conditions POST Endpoints:
+[[Endpoints]]
+=== POST Endpoints:
 
 - QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
 - PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
@@ -22,12 +22,12 @@ The T&C API is only needed if CPO wants to attach the document for a offer that 
 
 [%header]
 |====
-|    Name    |    Data Type    |    Description    |    Mandatory/Omit
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
 |    operatorId    |    string    |    CPO Id    |    M
 |====
 
-[[UploadTermsAndConditionsRequestBody]]
-=== Upload Terms & Conditions Request Body
+[[RequestBody]]
+=== Request Body
 
 Content-Type: multipart/form-data
 
@@ -58,8 +58,8 @@ When you use -F with curl, it automatically:
 
 image::images/termsrequestpostman.png[]
 
-[[UploadTermsAndConditionsResponseBody]]
-=== Upload Terms & Conditions Response Body
+[[ResponseBody]]
+=== Response Body
 
 [%header]
 |===

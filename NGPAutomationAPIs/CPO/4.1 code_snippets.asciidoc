@@ -1,0 +1,284 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[CreateNGPServiceOffer]]
+=== Create NGP Service Offer
+
+==== Request Body
+
+[source,JSON]
+----
+{
+    "serviceOfferId": "some fake ID",
+    "description": "testingTariff",
+    "partnerInternalId": "testingTariff",
+    "validFrom": "2025-05-15T14:16:13+03:00",
+    "validTo": null,
+    "unlimited": true,
+    "cancellationPeriod": 30,
+    "leadTime": "42",
+    "minimumTerm": 1,
+    "periodOfNotice": null,
+    "periodOfNoticeMessage": null,
+    "pricingType": "NGP",
+    "serviceTypeVersion": {
+        "serviceTypeId": 1,
+        "serviceTypeName": "Authorization",
+        "serviceTypeVersionNumber": 1
+    },
+    "offerToAll": true,
+    "subscriberPartnerIds": [],
+    "twoStepProcess": true,
+    "twoStepRequiredMasterDataFields": {
+        "taxId": true,
+        "brandName": true,
+        "billingContactEmail": true,
+        "billingContactPhone": true,
+        "billingContactFirstName": true,
+        "billingContactLastName": true,
+        "billingAddressCity": true,
+        "billingAddressCountry": true,
+        "billingAddressPostalCode": true,
+        "billingAddressStreet": true
+    },
+    "networkId": "2c91808395c8b3e90195cd323dfa0068",
+    "uploadedAttachmentId": "2c918083964003cb0196408a50940020",
+    "tariffs": [
+        {
+            "name": "tariffTest21",
+            "currency": "EUR",
+            "pricingComponents": [
+                {
+                    "cost": 0.3,
+                    "referenceUnit": "KILOWATT_HOUR",
+                    "type": "CHARGING_ENERGY",
+                    "gracePeriod": null
+                },
+                {
+                    "cost": 0.2,
+                    "referenceUnit": "MINUTE",
+                    "type": "CHARGING_TIME",
+                    "gracePeriod": null
+                },
+                {
+                    "cost": 0.1,
+                    "referenceUnit": "MINUTE",
+                    "type": "PARKING",
+                    "gracePeriod": null
+                },
+                {
+                    "cost": 0.4,
+                    "type": "SESSION",
+                    "gracePeriod": null,
+                    "referenceUnit": "NONE"
+                }
+            ]
+        },
+        {
+            "name": "tariffTest22",
+            "currency": "EUR",
+            "pricingComponents": [
+                {
+                    "cost": 0.7,
+                    "referenceUnit": "KILOWATT_HOUR",
+                    "type": "CHARGING_ENERGY",
+                    "gracePeriod": null
+                }
+            ]
+        }
+    ],
+    "products": [
+        {
+            "groupId": "2c91808295cc78cc0195cd3284ad0017",
+            "product": {
+                "currency": "EUR",
+                "timePlans": [
+                    {
+                        "daysOfTheWeek": [
+                            "MONDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Powder blue",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest21"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "TUESDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Carolina",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest21"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "WEDNESDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Carolina",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest22"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "THURSDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Carolina",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest22"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "FRIDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Carolina",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest21"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "SATURDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Iceberg",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest22"
+                            }
+                        ]
+                    },
+                    {
+                        "daysOfTheWeek": [
+                            "SUNDAY"
+                        ],
+                        "timeSlots": [
+                            {
+                                "color": "Indigo",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest22"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "groupId": "2c91808495f6235a0195fbd918190055",
+            "product": {
+                "currency": "EUR",
+                "timePlans": [
+                    {
+                        "daysOfTheWeek":
+                    [
+                        "MONDAY",
+                        "TUESDAY",
+                        "WEDNESDAY",
+                        "THURSDAY",
+                        "FRIDAY",
+                        "SATURDAY",
+                        "SUNDAY"
+                    ],
+                        "timeSlots": [
+                            {
+                                "color": "Indigo",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "tariffTest22"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
+----
+
+==== Response Body
+
+[source,JSON]
+----
+{
+    "createdBy": "SYSTEM",
+    "createdOn": "2024-06-27T06:33:16.587780Z",
+    "lastModifiedBy": "SYSTEM",
+    "lastModificationDate": "2025-04-07T13:25:00.668692Z",
+    "id": "4028818896c3fb3c0196c406d0290002",
+    "ownerPartnerId": "2c918082904bf2b90190590ac5ab0a32",
+    "partnerInternalId": "testingTariff",
+    "externalPartnerId": "GS*GPS",
+    "name": "geroCPOtest_Authorization_OfferToAll",
+    "description": "testingTariff",
+    "serviceTypeVersion": {
+        "serviceTypeId": 1,
+        "serviceTypeName": "Authorization",
+        "serviceTypeVersionNumber": 1
+    },
+    "offerToAll": true,
+    "subscriberPartnerIds": null,
+    "nrOfActiveSubscriptions": 0,
+    "nrOfChargingPoints": null,
+    "status": "PENDING",
+    "pricingType": "NGP",
+    "defaultPricePerRefUnit": null,
+    "currency": null,
+    "priceReferenceUnit": null,
+    "minimumTerm": 1,
+    "cancellationPeriod": 30,
+    "periodOfNotice": 0,
+    "periodOfNoticeMessage": null,
+    "attachments": [],
+    "validFrom": "2025-05-14T21:00:00Z",
+    "validTo": "+13544-01-20T21:59:59.999Z",
+    "cancellationTo": null,
+    "unlimited": true,
+    "leadTime": 42,
+    "version": 0,
+    "originalServiceOfferId": "4028818896c3fb3c0196c406d0290002",
+    "originalValidFrom": "2025-05-14T21:00:00Z",
+    "previousServiceOfferId": null,
+    "nextServiceOfferId": null,
+    "productPricingDTOSet": null,
+    "nrOfPendingSubscriptions": 0,
+    "twoStepProcess": true,
+    "twoStepRequiredMasterDataFields": {
+        "taxId": true,
+        "brandName": true,
+        "billingContactEmail": true,
+        "billingContactPhone": true,
+        "billingContactFirstName": true,
+        "billingContactLastName": true,
+        "billingAddressCity": true,
+        "billingAddressCountry": true,
+        "billingAddressPostalCode": true,
+        "billingAddressStreet": true
+    }
+}
+----
