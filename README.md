@@ -12,7 +12,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 2. EVSE Network API:
 - Creating an EVSE Network with EVSE Groups and EVSEs
 3. Upload Terms & Conditions (PDF) API:
-- Upload terms to a service offer in PDF format.
+- Upload “Terms and Conditions” pdf document for to be created service offer 
 4. Create NGP Service Offer API:
 - Endpoint to define and publish a new NGP service offer
 5. Update Pricing for NGP Offers API:

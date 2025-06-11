@@ -1,0 +1,69 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[UploadTermsAndConditionsInfo]]
+=== Upload Terms & Conditions Info
+
+Upload “Terms and Conditions” pdf document for to be created service offer.
+
+To attach a file to a service offer is not mandatory.
+The T&C API is only needed if CPO wants to attach the document for a offer that wants to create.
+
+[[UploadTermsAndConditionsEndpoints]]
+=== Upload Terms & Conditions POST Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
+- PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Omit
+|    operatorId    |    string    |    CPO Id    |    M
+|====
+
+[[UploadTermsAndConditionsRequestBody]]
+=== Upload Terms & Conditions Request Body
+
+Content-Type: multipart/form-data
+
+[%header]
+|===
+|    Name    |    Data Type    |    Description    |    M/O
+|    file    |    file    |    The pdf that needs to be uploaded    |    M
+|    attachmentType    |    text    |    Attachment type file: only allowed “pdf” or “PDF” values    |    M
+|===
+
+[[cURL]]
+==== cURL:
+
+----
+curl -X POST https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments \
+  -F "file=@/path/to/your/file.pdf" \
+  -F "attachmentType=pdf"
+----
+
+When you use -F with curl, it automatically:
+
+- Sets Content-Type: multipart/form-data;
+- Generates a proper boundary for you;
+- Properly encodes each part (including filenames and content types).
+
+[[Postman]]
+==== Postman:
+
+image::images/termsrequestpostman.png[]
+
+[[UploadTermsAndConditionsResponseBody]]
+=== Upload Terms & Conditions Response Body
+
+[%header]
+|===
+|    Name    |    Data Type    |    Description    |    M/O
+|    uploadedAttachmentId    |    string    |    Id of the uploaded document    |    M
+|    originalFileName    |    string    |    Original file name    |    M
+|===

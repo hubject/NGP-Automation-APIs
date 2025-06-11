@@ -1,0 +1,17 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[UploadTermsAndConditions]]
+=== Upload Terms & Conditions
+
+=== Response Body
+
+[source,JSON]
+----
+{
+    "uploadedAttachmentId": "2c918082975dc44c01975f0f77b40066",
+    "originalFileName": "More+AWS+Use+Cases+Study+Guide+and+Slides.pdf"
+}
+----

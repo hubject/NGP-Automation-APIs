@@ -21,13 +21,13 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 
 [%header]
 |====
-|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    Name    |    Data Type    |    Description    |    Mandatory/Omit
 |    providerId    |    string    |    EMP Id    |    M
 |    operatorId    |    string    |    CPO Id    |    M
 |====
 
-[[EnhancedContractsResponse]]
-=== Enhanced Contracts Response
+[[EnhancedContractsResponseBody]]
+=== Enhanced Contracts Response Body
 
 [%header]
 |===
