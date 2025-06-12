@@ -1,0 +1,146 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[UpdatePricingforNGPOffers]]
+=== Update Pricing for NGP Offers
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+    "nextServiceOfferId": "some fake ID again needed",
+    "networkId": "2c91808896cf6f6d0196cfc7278d0004",
+    "updateDate": "2025-07-03T12:33:00+03:00",
+    "tariffs":
+    [
+        {
+            "name": "stupido2",
+            "currency": "EUR",
+            "pricingComponents":
+            [
+                {
+                    "cost": 0.777,
+                    "referenceUnit": "KILOWATT_HOUR",
+                    "type": "CHARGING_ENERGY",
+                    "gracePeriod": null
+                }
+            ]
+        },
+                {
+            "name": "stupido3",
+            "currency": "EUR",
+            "pricingComponents":
+            [
+                {
+                    "cost": 0.888,
+                    "referenceUnit": "MINUTE",
+                    "type": "CHARGING_TIME",
+                    "gracePeriod": null
+                }
+            ]
+        }
+    ],
+    "pricingDetails":
+    [
+        {
+            "groupId": "2c91808896cf6f6d0196cfc7279b0005",
+            "product":
+            {
+                "currency": "EUR",
+                "timePlans":
+                [
+                    {
+                        "daysOfTheWeek":
+                        [
+                            "MONDAY",
+                            "TUESDAY",
+                            "WEDNESDAY",
+                            "THURSDAY",
+                            "FRIDAY"
+                        ],
+                        "timeSlots":
+                        [
+                            {
+                                "color": "Iceberg",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "stupido2"
+                            }
+                        ]
+                    },
+                                        {
+                        "daysOfTheWeek":
+                        [
+                            "SATURDAY",
+                            "SUNDAY"
+                        ],
+                        "timeSlots":
+                        [
+                            {
+                                "color": "Water blue",
+                                "endTime": "23:59:59",
+                                "startTime": "00:00:00",
+                                "tariffName": "stupido3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
+----
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "createdBy": "SYSTEM",
+    "createdOn": "2025-05-14T17:21:24.097189243Z",
+    "lastModifiedBy": "SYSTEM",
+    "lastModificationDate": "2025-05-14T17:21:24.097189243Z",
+    "id": "2c91808896cfbe500196cfd0b462000d",
+    "ownerPartnerId": "2c918082904bf2b90190590ac5ab0a32",
+    "partnerInternalId": "pricing update 14.05",
+    "externalPartnerId": "GS*GPS",
+    "name": "geroCPOtest_Authorization_OfferToAll",
+    "description": "pricing update",
+    "serviceTypeVersion": {
+        "serviceTypeId": 1,
+        "serviceTypeName": "Authorization",
+        "serviceTypeVersionNumber": 1
+    },
+    "offerToAll": true,
+    "subscriberPartnerIds": null,
+    "nrOfActiveSubscriptions": 0,
+    "nrOfChargingPoints": null,
+    "status": "PENDING",
+    "pricingType": "NGP",
+    "defaultPricePerRefUnit": null,
+    "currency": null,
+    "priceReferenceUnit": null,
+    "minimumTerm": 1,
+    "cancellationPeriod": 30,
+    "periodOfNotice": 0,
+    "periodOfNoticeMessage": null,
+    "attachments": [],
+    "validFrom": "2025-07-02T21:00:00Z",
+    "validTo": "+13544-01-20T10:07:51Z",
+    "cancellationTo": null,
+    "unlimited": true,
+    "leadTime": 42,
+    "version": 1,
+    "originalServiceOfferId": "2c91808696cfbe1c0196cfcb711e0004",
+    "originalValidFrom": "2025-05-14T21:00:00Z",
+    "previousServiceOfferId": "2c91808696cfbe1c0196cfcb711e0004",
+    "nextServiceOfferId": null,
+    "productPricingDTOSet": [],
+    "nrOfPendingSubscriptions": 0,
+    "twoStepProcess": false,
+    "twoStepRequiredMasterDataFields": null
+}
+----

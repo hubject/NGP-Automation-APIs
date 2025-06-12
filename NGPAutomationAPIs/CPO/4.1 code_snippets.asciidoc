@@ -6,7 +6,7 @@ IMPORTANT: All the values provided in this Code Snippets are for demonstration p
 [[CreateNGPServiceOffer]]
 === Create NGP Service Offer
 
-==== Request Body
+==== Request Body:
 
 [source,JSON]
 ----
@@ -221,7 +221,7 @@ IMPORTANT: All the values provided in this Code Snippets are for demonstration p
 }
 ----
 
-==== Response Body
+==== Response Body:
 
 [source,JSON]
 ----

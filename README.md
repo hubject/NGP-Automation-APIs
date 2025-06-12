@@ -16,7 +16,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 4. Create NGP Service Offer API:
 - Enables CPOs to programmatically create new NGP service offers including detailed tariff, pricing, and subscription information.
 5. Update Pricing for NGP Offers API:
-- CPO users can update pricing for NGP Unlimited Offers.
+- Allows CPOs to update the prices of existing NGP unlimited offers (both Bilateral and Offer-to-All) via API.
 6. Extract Offer & Subscription Details API:
 - Lets CPOs retrieve detailed offer and subscriber information for syncing and reporting.
 

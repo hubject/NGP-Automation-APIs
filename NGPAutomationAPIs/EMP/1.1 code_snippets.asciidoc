@@ -6,7 +6,7 @@ IMPORTANT: All the values provided in this Code Snippets are for demonstration p
 [[ContractEnhanced]]
 === Enhanced Contracts
 
-==== Response Body
+==== Response Body:
 
 [source,JSON]
 ----

@@ -6,7 +6,7 @@ IMPORTANT: All the values provided in this Code Snippets are for demonstration p
 [[UploadTermsAndConditions]]
 === Upload Terms & Conditions
 
-==== Response Body
+==== Response Body:
 
 [source,JSON]
 ----
