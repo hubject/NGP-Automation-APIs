@@ -11,11 +11,6 @@ CPO users can update pricing for NGP Unlimited Offers.
 Reduces friction in maintaining competitive pricing.
 CPOs can adjust tariffs dynamically in their own backend systems and push updates efficiently to the platform, eliminating manual steps and saving time during price changes.
 
-[[Dependencies]]
-==== Dependencies:
-
-1. Create NGP Service Offer - required to get the Id of the created offer.
-
 [[Endpoints]]
 === PUT Endpoints:
 
@@ -28,7 +23,7 @@ CPOs can adjust tariffs dynamically in their own backend systems and push update
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    Mandatory/Optional
-|    operatorId    |    string    |    CPO Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
 |    serviceOfferId    |    string    |    Id of offer to be updated    |    M
 |====
 

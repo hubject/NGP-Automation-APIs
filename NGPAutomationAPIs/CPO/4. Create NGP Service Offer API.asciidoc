@@ -29,7 +29,7 @@ This reduces operational errors and increases speed-to-market when publishing ne
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    Mandatory/Optional
-|    operatorId    |    string    |    CPO Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
 |====
 
 [[RequestBody]]

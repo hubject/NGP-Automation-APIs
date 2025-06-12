@@ -23,7 +23,7 @@ This transparency helps CPOs keep internal records updated and improves downstre
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    Mandatory/Optional
-|    operatorId    |    string    |    CPO Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
 |====
 
 [[ResponseBody]]

@@ -22,8 +22,8 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    Mandatory/Optional
-|    providerId    |    string    |    EMP Id    |    M
-|    operatorId    |    string    |    CPO Id    |    M
+|    providerId    |    string    |    EMP external Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
 |====
 
 [[ResponseBody]]

@@ -23,7 +23,7 @@ The T&C API is only needed if CPO wants to attach the document for a offer that 
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    Mandatory/Optional
-|    operatorId    |    string    |    CPO Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
 |====
 
 [[RequestBody]]
