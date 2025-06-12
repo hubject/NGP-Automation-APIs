@@ -1,0 +1,195 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[ContractEnhancedInfo]]
+=== Enhanced Contracts Info
+
+Allows EMPs to view tariff and pricing details linked to EVSE Groups for all active NGP subscriptions.
+
+Gives EMPs better visibility into the cost structure of their subscribed offers, allowing them to optimize margins, adjust pricing strategies, and offer more accurate prices to EV drivers in their mobile apps.
+
+[[Endpoints]]
+=== GET Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
+- PROD env: https://service.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    providerId    |    string    |    EMP external Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
+|====
+
+[[ResponseBody]]
+=== Response Body
+
+[%header]
+|===
+|    Name    |    Data Type    |    Description    |    M/O
+|    CPOGeneralInformation    |    <<CPOGeneralInformation>>    |    CPO Details    |    M
+|    CPOContactDetails    |    <<CPOContactDetails>>    |    CPO contact details    |    M
+|    BillingInformation    |    <<BillingInformation>>    |    CPO billing details    |    M
+|    Offers    |    array <<Offer>>    |    Active NGP service offers with active subscriptions    |    M
+|===
+
+[[PayloadObjects]]
+==== PayloadObjects:
+
+[[CPOGeneralInformation]]
+==== CPOGeneralInformation
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    CPOName |    string |    CPO name |    M
+|    OperatorID |    string |    CPO Operator ID |    M
+|    SubPartners |    array |    CPO sub partners |    M
+|    Countries |    array |    Countries in which CPO operates |    M
+|====
+
+[[CPOContactDetails]]
+==== CPOContactDetails
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    ContactFirstName |    string |    Contact first name |    M
+|    ContactLastName |    string |    Contact last name |    M
+|    Email |    string |    Contact email |    M
+|    SupportEmail |    string |    Support email |    M
+|    EmergencyEmail |    string |    Emergency contact email |    M
+|    B2BPhone |    string |    B2B contact phone number |    O
+|====
+
+[[BillingInformation]]
+==== BillingInformation
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    BillingContactFirstName |    string |    Billing contact first name |    M
+|    BillingContactLastName |    string |    Billing contact last name |    M
+|    BillingContactEmail |    string |    Billing contact email |    M
+|    BillingContactPhone |    string |    Billing contact phone |    M
+|    BankAccount |    string |    Bank account number |    M
+|    TaxID |    string |    TaxID |    M
+|    Country |    string |    Country |    M
+|    City |    string |    City |    M
+|    Street |    string |    Street |    M
+|    PostalCode |    string |    Postal code |    M
+|====
+
+[[Offer]]
+==== Offer
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    OfferDetails |    <<OfferDetails>> |    Service offer details |    M
+|    SubscriptionDetails |    <<SubscriptionDetails>> |    Subscription details |    M
+|    NetworkDetails | <<NetworkDetails>> |    Network details |    M
+|    Pricing |    array <<Pricing>> |    Pricing information |    M
+|====
+
+[[OfferDetails]]
+==== OfferDetails
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    ServiceOfferId |    string |    Service offer id |    M
+|    ServiceOfferName |    string |    Service offer name |    M
+|    OfferType |    string |    Service offer type: OFFER_TO_ALL, BILATERAL  |    M
+|    ServiceTypeName |    string |   Service type name: Authorization, Reservation  |    M
+|    Description |    string |    Offer description |    M
+|    ServiceOfferStatus |    string |    Service offer status: ACTIVE |    M
+|    PricingType |    string |    Offer pricing type: NGP |    M
+|    MinimumTerm |    integer |    The minimum number of days an EMP partner must be subscribed to this offer |    M
+|    CancellationPeriod |    integer |    The number of days between the cancellation and deactivation dates |    M
+|    ValidFrom |    string |  Offer valid from date; format - date-time   |    M
+|    ValidTo |    string |  Offer valid to date; format - date-time   |    M
+|    CancellationTo |    string |    Cancellation date; format - date-time |    O
+|    LeadTime |    integer |  Price changes lead time  |    O
+|    CreatedOn |    string |    Offer creation date; format - date-time |    M
+|====
+
+[[SubscriptionDetails]]
+==== SubscriptionDetails
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    SubscriptionName |    string |    Subscription name |    M
+|    SubscriptionDate |    string |    Subscription start date; format - date-time |    M
+|    SubscriptionStatus |    string |    Subscription status: SUBSCRIBED  |    M
+|    PeriodOfNotice |    integer |    Period of notice in days |    M
+|    PeriodOfNoticeMessage |    string |    Period of notice message |    O
+|    ValidFrom |    string |    Date since when subscription is valid; format - date-time |    M
+|    ValidTo |    string |    Date until when subscription is valid; format - date-time |    M
+|    SubscriptionCancellationDate |    string |    Subscription cancellation date; format - date-time |    O
+|====
+
+[[NetworkDetails]]
+==== NetworkDetails
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    NetworkId |    string |    EVSE Network id |    M
+|    NetworkName |    string |    EVSE Network name |    M
+|    GroupCount |    integer |    EVSE Group count |    M
+|    EvseCount |    integer |    EVSE count |    M
+|====
+
+[[Pricing]]
+==== Pricing
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    GroupId |    string |    EVSE Group id |    M
+|    GroupName |    string |    EVSE Group name |    M
+|    Currency |    string |    Pricing currency |    M
+|    Days |    array <<Day>> |    List of days of the week with tariffs |    M
+|====
+
+[[Day]]
+==== Day
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Day |    enum |    Day of the week: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY |    M
+|    Tariffs |    array <<Tariff>> |    Tariffs for a specific day |    M
+|====
+
+[[Tariff]]
+==== Tariff
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Name |    string |    Tariff name |    M
+|    StartTime |    string |    Time slot start time; format - time |    M
+|    EndTime |    string |    Time slot end time; format - time |    M
+|    PricingComponents |    array <<PricingComponent>> |    Pricing components for the tariff |    M
+|====
+
+[[PricingComponent]]
+==== PricingComponent
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Type |    string |    Pricing component type |    M
+|    ReferenceUnit |    string |    Pricing component reference unit |    M
+|    Cost |    number |    Pricing component cost |    M
+|    FeeInitiated |    string |    Pricing component parking fee initialization type |    O
+|    GracePeriod |    integer |    Pricing component grace period |    O
+|====

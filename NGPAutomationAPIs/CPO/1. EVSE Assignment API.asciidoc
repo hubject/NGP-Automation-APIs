@@ -1,0 +1,67 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[EVSEAssignmentInfo]]
+=== EVSE Assignment Info
+
+API for assigning EVSEs to current EVSE Groups.
+
+[[Endpoints]]
+=== PUT Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/evsenetwork/v1/operators/{operatorId}/network
+- PROD env: https://service.hubject.com/api/evsenetwork/v1/operators/{operatorId}/network
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    operatorId    |    string    |    CPO external Id    |    M
+|====
+
+[[RequestBody]]
+=== Request Body
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    NetworkName    |    string    |    EVSE network name    |    M
+|    GroupsAssignments    |    array <<GroupAssignment>>    |    Groups assignments    |    M
+|====
+
+[[ResponseBody]]
+=== Response Body
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    NetworkName    |    string    |    EVSE network name    |    M
+|    GroupsAssignments    |    array <<GroupAssignmentResponse>>    |    Groups assignments    |    M
+|====
+
+[[PayloadObjects]]
+==== PayloadObjects:
+
+[[GroupAssignment]]
+==== GroupAssignment
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    GroupName    |    string    |    EVSE group name    |    M
+|    Evses    |    array    |    Ids of EVSEs to be assigned to the group    |    M
+|====
+
+[[GroupAssignmentResponse]]
+==== GroupAssignmentResponse
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    GroupName    |    string    |    EVSE group name    |    M
+|    Evses    |    array    |    Ids of all EVSEs assigned to this group    |    M
+|====

@@ -1,0 +1,74 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[EVSENetworkInfo]]
+=== EVSE Network Info
+
+API for creating EVSE Network, EVSE Groups, and assign EVSEs to these groups.
+
+[[Endpoints]]
+=== POST Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/evsenetwork/v1/operators/{operatorId}/networks
+- PROD env: https://service.hubject.com/api/evsenetwork/v1/operators/{operatorId}/networks
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    operatorId    |    string    |    CPO external Id    |    M
+|====
+
+[[RequestBody]]
+=== Request Body
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    evseNetworkName    |    string    |    EVSE network name    |    M
+|    evseNetworkDescription    |    string    |    Network description    |    O
+|    evseGroups    |    array <<EvseGroup>>    |    Service offer name    |    M
+|====
+
+[[ResponseBody]]
+=== Response Body
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    id    |    string    |    EVSE network id    |    M
+|    evseNetworkName    |    string    |    EVSE network name    |    M
+|    evseNetworkDescription    |    string    |    Network description    |    O
+|    evseGroups    |    array <<EvseGroupResponse>>    |    Service offer name    |    M
+|    createdAt    |    string    |    Network created date; format - date-time   |    M
+|====
+
+[[PayloadObjects]]
+==== PayloadObjects:
+
+[[EvseGroup]]
+==== EvseGroup
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    groupName    |    string    |    EVSE group name    |    M
+|    groupDescription    |    string    |    Group description    |    O
+|    evseIds    |    array    |    Ids of EVSEs to be assigned to the group    |    M
+|====
+
+[[EvseGroupResponse]]
+==== EvseGroupResponse
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    id    |    string    |    EVSE group id    |    M
+|    groupName    |    string    |    EVSE group name    |    M
+|    groupDescription    |    string    |    Group description    |    O
+|    evseIds    |    array    |    Ids of assigned EVSEs   |    M
+|====

@@ -1,0 +1,47 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[EVSENetwork]]
+=== EVSE Network
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+    "evseNetworkName": "testing network 2",
+    "evseNetworkDescription": "testing network 06.06",
+    "evseGroups": [
+        {
+            "groupName": "testing 2 group",
+            "evseIds": [
+                "GS*GPS*EEAPC"
+            ]
+        }
+    ]
+}
+----
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "id": "2c918082972042ae019743521f68001c",
+    "evseNetworkName": "testing network 2",
+    "evseNetworkDescription": "testing network 06.06",
+    "evseGroups": [
+        {
+            "id": "2c918082972042ae019743521f77001d",
+            "groupName": "testing 2 group",
+            "groupDescription": null,
+            "evseIds": [
+                "GS*GPS*EEAPC"
+            ]
+        }
+    ],
+    "createdAt": "2025-06-06T03:39:04.935926663Z"
+}
+----

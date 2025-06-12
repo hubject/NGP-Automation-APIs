@@ -1,0 +1,760 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[ContractEnhanced]]
+=== Enhanced Contracts
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "CPOGeneralInformation":
+    {
+        "CPOName": "geroCPOtest",
+        "OperatorID": "GS*GPS",
+        "SubPartners":
+        [],
+        "Countries":
+        [
+            "HUN",
+            "DEU"
+        ]
+    },
+    "CPOContactDetails":
+    {
+        "ContactFirstName": "ger",
+        "ContactLastName": "sim",
+        "Email": "hbsportalmail+gps@gmail.com",
+        "SupportEmail": "hbsportalmail+gps011@gmail.com",
+        "EmergencyEmail": "hbsportalmail+gps011@gmail.com",
+        "B2BPhone": "007"
+    },
+    "BillingInformation":
+    {
+        "BillingContactFirstName": "-",
+        "BillingContactLastName": "-",
+        "BillingContactEmail": "hbsportalmail+gps011@gmail.com",
+        "BillingContactPhone": "-",
+        "BankAccount": null,
+        "TaxID": "007",
+        "Country": "BGR",
+        "City": "-",
+        "Street": "-",
+        "PostalCode": "-"
+    },
+    "Offers":
+    [
+        {
+            "OfferDetails":
+            {
+                "ServiceOfferId": "2c91808396d755730196d7cd82750000",
+                "ServiceOfferName": "geroCPOtest_Authorization_OfferToAll",
+                "OfferType": "OFFER_TO_ALL",
+                "ServiceTypeName": "Authorization",
+                "Description": "sonar test",
+                "ServiceOfferStatus": "ACTIVE",
+                "PricingType": "NGP",
+                "MinimumTerm": 1,
+                "CancellationPeriod": 30,
+                "ValidFrom": "2025-05-16T03:34:56Z",
+                "ValidTo": "+13544-01-20T21:59:59.999Z",
+                "CancellationTo": null,
+                "LeadTime": 31,
+                "CreatedOn": "2025-05-16T03:34:52.365028Z"
+            },
+            "SubscriptionDetails":
+            {
+                "SubscriptionName": "geroEMPtest_geroCPOtest_Authorization",
+                "SubscriptionDate": "2025-05-22T09:25:12.375502Z",
+                "SubscriptionStatus": "SUBSCRIBED",
+                "PeriodOfNotice": 0,
+                "PeriodOfNoticeMessage": null,
+                "ValidFrom": "2025-05-22T09:25:12.241Z",
+                "ValidTo": "2025-06-23T20:59:59.999Z",
+                "SubscriptionCancellationDate": null
+            },
+            "NetworkDetails":
+            {
+                "NetworkId": "2c91808496d2ed7a0196d34daca70008",
+                "NetworkName": "dude network",
+                "GroupCount": 1,
+                "EvseCount": 1
+            },
+            "Pricing":
+            [
+                {
+                    "GroupId": "2c91808496d2ed7a0196d34dacc30009",
+                    "GroupName": "dude group",
+                    "Currency": "EUR",
+                    "Days":
+                    [
+                        {
+                            "Day": "MONDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase103",
+                                    "StartTime": "22:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.000,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Name": "sonar testcase101",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "21:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.000,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SUNDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SATURDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "THURSDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "WEDNESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "FRIDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "TUESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "sonar testcase102",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 1.052,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "OfferDetails":
+            {
+                "ServiceOfferId": "4028818896c34b240196c35420b40002",
+                "ServiceOfferName": "geroCPOtest_Authorization_OfferToAll",
+                "OfferType": "OFFER_TO_ALL",
+                "ServiceTypeName": "Authorization",
+                "Description": "waaaaaaaa",
+                "ServiceOfferStatus": "ACTIVE",
+                "PricingType": "NGP",
+                "MinimumTerm": 1,
+                "CancellationPeriod": 30,
+                "ValidFrom": "2025-06-23T21:00:00Z",
+                "ValidTo": "+13544-01-20T10:07:51Z",
+                "CancellationTo": null,
+                "LeadTime": 42,
+                "CreatedOn": "2025-05-12T07:09:54.064393Z"
+            },
+            "SubscriptionDetails":
+            {
+                "SubscriptionName": "geroEMPtest_geroCPOtest_Authorization",
+                "SubscriptionDate": "2025-05-21T09:51:01.983459Z",
+                "SubscriptionStatus": "SUBSCRIBED",
+                "PeriodOfNotice": 0,
+                "PeriodOfNoticeMessage": null,
+                "ValidFrom": "2025-06-23T21:00:00Z",
+                "ValidTo": "2025-11-19T18:59:59.999Z",
+                "SubscriptionCancellationDate": null
+            },
+            "NetworkDetails":
+            {
+                "NetworkId": "2c91808395c8b3e90195cd323dfa0068",
+                "NetworkName": "GPS-evse-network-man",
+                "GroupCount": 2,
+                "EvseCount": 10
+            },
+            "Pricing":
+            [
+                {
+                    "GroupId": "2c91808295cc78cc0195cd3284ad0017",
+                    "GroupName": "GPS-evse-group",
+                    "Currency": "EUR",
+                    "Days":
+                    [
+                        {
+                            "Day": "FRIDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "MONDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SATURDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SUNDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "WEDNESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "THURSDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "TUESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "testTariff4",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.700,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "GroupId": "2c91808495f6235a0195fbd918190055",
+                    "GroupName": "evse-group-man",
+                    "Currency": "EUR",
+                    "Days":
+                    [
+                        {
+                            "Day": "FRIDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "MONDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SATURDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SUNDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "WEDNESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "THURSDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "TUESDAY",
+                            "Tariffs":
+                            [
+                                {
+                                    "Name": "waaaa1",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents":
+                                    [
+                                        {
+                                            "Type": "CHARGING_TIME",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.200,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "PARKING",
+                                            "ReferenceUnit": "MINUTE",
+                                            "Cost": 0.100,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 0.300,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        },
+                                        {
+                                            "Type": "SESSION",
+                                            "ReferenceUnit": "NONE",
+                                            "Cost": 0.400,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+----
+

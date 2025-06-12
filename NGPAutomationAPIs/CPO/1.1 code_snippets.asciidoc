@@ -1,0 +1,42 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[EVSEAssignment]]
+=== EVSE Assignment
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+    "NetworkName": "dude network",
+    "GroupsAssignments": [
+        {
+            "GroupName": "dude group",
+            "Evses": [
+                "GS*GPS*EEAPC666"
+            ]
+        }
+    ]
+}
+----
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "NetworkName": "dude network",
+    "GroupsAssignments": [
+        {
+            "GroupName": "dude group",
+            "Evses": [
+                "GS*GPS*EEAPC666",
+                "GS*GPS*EEAPC"
+            ]
+        }
+    ]
+}
+----
