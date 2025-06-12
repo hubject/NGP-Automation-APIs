@@ -6,7 +6,7 @@ image::images/hubjectlogo.png[float="right",align="right"]
 [[UpdatePricingforNGPOffersInfo]]
 === Update Pricing for NGP Offers Info
 
-CPO users can update pricing for NGP Unlimited Offers.
+CPO users can update pricing for NGP Unlimited Offers. API allows only full update of the pricing.
 
 Reduces friction in maintaining competitive pricing.
 CPOs can adjust tariffs dynamically in their own backend systems and push updates efficiently to the platform, eliminating manual steps and saving time during price changes.

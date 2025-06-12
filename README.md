@@ -28,7 +28,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 
 5. Update Pricing for NGP Offers API:
 
-- Allows CPOs to update the prices of existing NGP unlimited offers (both Bilateral and Offer-to-All) via API.
+- Allows CPOs to update the prices of existing NGP unlimited offers (both Bilateral and Offer-to-All)
 
 6. Extract Offer & Subscription Details API:
 
@@ -40,4 +40,4 @@ Authentication and authorization is done through a valid contract (SSL certifica
 1. Enhanced Contracts API:
 
 - Improves the existing Contract API to allow EMPs to pull pricing and tariff information for all NGP offers they are subscribed to, including data tied to
-  specific EVSE Groups.
+  specific EVSE Groups, EVSE Network details and CPO contact data.
