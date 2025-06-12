@@ -193,4 +193,3 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 |    FeeInitiated |    string |    Pricing component parking fee initialization type |    O
 |    GracePeriod |    integer |    Pricing component grace period |    O
 |====
-

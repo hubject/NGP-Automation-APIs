@@ -1,0 +1,241 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[ExtractOfferAndSubscriptionDetailsInfo]]
+=== Extract Offer & Subscription Details Info
+
+Lets CPOs retrieve detailed offer and subscription information for syncing and reporting.
+
+Supports accurate syncing with CPO backend systems for reporting and invoicing.
+This transparency helps CPOs keep internal records updated and improves downstream financial and customer management processes.
+
+[[Endpoints]]
+=== GET Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/info
+- PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/info
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    operatorId    |    string    |    CPO Id    |    M
+|====
+
+[[ResponseBody]]
+=== Response Body
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    offersInfo    |    array <<ServiceOfferInfo>>    |    Service offer info    |    M
+|====
+
+[[PayloadObjects]]
+==== PayloadObjects:
+
+[[ServiceOfferInfo]]
+==== ServiceOfferInfo
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    serviceOffer    |    <<ServiceOffer>>    |    Service offer    |    M
+|    subscriptions    |    array <<Subscription>>    |    Subscriptions    |    M
+|    network | <<Network>> |    Network info |    M
+|    pricingDetails |    array <<Pricing>> |    Pricing information |    M
+|====
+
+[[ServiceOffer]]
+==== ServiceOffer
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    createdBy    |    string    |    Offer created by: SYSTEM   |    M
+|    createdOn    |    string    |    Offer created date; format - date-time   |    M
+|    lastModifiedBy    |    string    |    Offer last modified by: SYSTEM   |    M
+|    lastModificationDate    |    string    |    Offer last modification date; format - date-time  |    M
+|    id    |    string    |    Offer id   |    M
+|    ownerPartnerId    |    string    |    Owner internal id   |    M
+|    partnerInternalId    |    string    |    Offer name   |    M
+|    externalPartnerId    |    string    |    Owner external id   |    M
+|    name    |    string    |    Automatically generated name - contains Offerer Partner Name, Service Type and Type.   |    M
+|    description    |    string    |    Offer description    |    M
+|    serviceTypeVersion    |    <<ServiceTypeVersion>>    |    Service type version    |    M
+|    offerToAll    |    boolean    |    Is offer to all    |    M
+|    subscriberPartnerIds    |    array    |    Subscriber partner internal Ids for bilateral offer    |    O
+|    nrOfActiveSubscriptions    |    integer    |    Number of active subscriptions    |    M
+|    nrOfChargingPoints    |    integer    |    Number of charging points    |    O
+|    status    |    string    |    Offer status: PENDING    |    M
+|    pricingType    |    string    |    Offer pricing type: NGP    |    M
+|    defaultPricePerRefUnit    |    number    |    Price per reference unit    |    O
+|    currency    |    string    |    Currency of the price    |    O
+|    priceReferenceUnit    |    string    |    Price reference unit    |    O
+|    minimumTerm    |    integer    |    The minimum number of days an EMP partner must be subscribed to this offer    |    M
+|    cancellationPeriod    |    integer    |    The number of days between the cancellation and deactivation dates    |    M
+|    periodOfNotice    |    integer    |    Period of notice in days    |    M
+|    periodOfNoticeMessage    |    string    |    Period of notice message    |    O
+|    attachments    |    array    |    Attachments    |    O
+|    validFrom    |    string    |    Offer valid from date; format - date-time    |    M
+|    validTo    |    string    |    Offer valid to date; format - date-time   |    M/O
+|    cancellationTo    |    string    |    Offer becomes inactive at this time (if set); format - date-time    |    M/O
+|    unlimited    |    boolean    |    Is offer unlimited    |    M
+|    leadTime    |    integer    |    Price changes lead time    |    M/O
+|    version    |    integer    |    Offer version    |    M
+|    originalServiceOfferId    |    string    |    Unlimited service offer original service offer id    |    M/O
+|    originalValidFrom    |    string    |    Original unlimited service offer valid from; format - date-time   |    M/O
+|    previousServiceOfferId    |    integer    |    Unlimited service offer previous service offer id    |    M/O
+|    nextServiceOfferId    |    integer    |    Unlimited service offer next service offer id    |    M/O
+|    productPricingDTOSet    |    array    |    not available    |    O
+|    nrOfPendingSubscriptions    |    integer    |    Number of pending subscriptions    |    M
+|    twoStepProcess    |    boolean    |    Is two-step-process offer    |    M
+|    twoStepRequiredMasterDataFields    |    <<TwoStepRequiredMasterDataFields>>    |    Two-step-process required master data fields   |    M
+|====
+
+[[ServiceTypeVersion]]
+==== ServiceTypeVersion
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    serviceTypeId |    integer |    Type id: 1, 10 |    M
+|    serviceTypeName |    string |    Type name: Authorization, Reservation |    M
+|    serviceTypeVersionNumber |    integer |    Version number: 1 |    M
+|====
+
+[[TwoStepRequiredMasterDataFields]]
+==== TwoStepRequiredMasterDataFields
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    taxId |    boolean |    Is Tax id required |    M/O
+|    brandName |    boolean |    Is brand name required |    M/O
+|    billingContactEmail |    boolean |    Is billing contact email required |    M/O
+|    billingContactPhone |    boolean |    Is billing contact phone required |    M/O
+|    billingContactFirstName |    boolean |    Is billing contact first name required |    M/O
+|    billingContactLastName |    boolean |    Is billing contact last name required |    M/O
+|    billingAddressCity |    boolean |    Is billing address city required |    M/O
+|    billingAddressCountry |    boolean |    Is billing address country required |    M/O
+|    billingAddressPostalCode |    boolean |    Is billing address postal code required |    M/O
+|    billingAddressStreet |    boolean |    Is billing address street required |    M/O
+|====
+
+[[Subscription]]
+==== Subscription
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    createdBy    |    string    |    Subscription created by: SYSTEM   |    M
+|    createdOn    |    string    |    Subscription created date; format - date-time   |    M
+|    lastModifiedBy    |    string    |    Subscription last modified by: SYSTEM   |    M
+|    lastModificationDate    |    string    |    Subscription last modification date; format - date-time  |    M
+|    id    |    string    |    Subscription id   |    M
+|    partnerInternalId    |    string    |    Id provided by the partner   |    M
+|    name    |    string    |    Name of the subscription   |    M
+|    serviceOfferId    |    string    |    Service offer id   |    M
+|    serviceOfferName    |    string    |    Automatically generated name of the offer - contains Offerer Partner Name, Service Type and Type   |    M
+|    offererPartnerId    |    string    |    Offerer internal id   |    M
+|    offererPartnerName    |    string    |    Name of the offerer partner of the service offer   |    M
+|    serviceTypeId    |    integer    |    Id of the service type of the service offer: 1, 10   |    M
+|    serviceTypeName    |    string    |    Name of the service type of the service offer: Authorization, Reservation   |    M
+|    subscriberPartnerId    |    string    |    Subscriber internal id   |    M
+|    subscriberPartnerName    |    string    |    Partner name of the subscriber   |    M
+|    subscriberPartnerExternalId    |    string    |    External partner id of the subscriber   |    M
+|    status    |    string    |    Status of the subscription: SUBSCRIBED   |    M
+|    subscribeDate    |    string    |    Date and time of creation of the subscription; format - date-time   |    M
+|    periodOfNotice    |    integer    |    The number of days before the end of the service offer when subscribers should be notified    |    M
+|    periodOfNoticeMessage    |    string    |    The notification text for the notifications about the end of a subscription    |    O
+|    validFrom    |    string    |    The time from which the subscription is valid; format - date-time    |    M
+|    validTo    |    string    |    The time until the subscription is active; format - date-time   |    M
+|    cancellationTo |    string |    The subscription becomes inactive at this time (if set); format - date-time |    O
+|    wasSubscribed    |    boolean    |    Was EMP ever subscribe to this service offer    |    M
+|    twoStepData    |    <<TwoStepData>>    |    Two steps data for partner acceptance service offer   |    O
+|    twoStepErrorStatus    |    enum    |    Two steps data error status: INCORRECT_DATA_FORMAT, INVALID_VAT_ID, BUSINESS_REQUIREMENTS_NOT_MATCHED, NOT_ELIGIBLE, OTHERS    |    O
+|    requestedDate    |    string    |    Date and time of the request for the subscription for a two-step process offer; format - date-time   |    O
+|    rejectedDate    |    string    |    Date and time of the decline for the subscription for a two-step process offer; format - date-time   |    O
+|====
+
+[[TwoStepData]]
+==== TwoStepData
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    taxId |    string |    Tax id info |    M/O
+|    brandName |    string |    Brand name info |    M/O
+|    billingContactEmail |    string |    Billing contact email info |    M/O
+|    billingContactPhone |    string |    Billing contact phone info |    M/O
+|    billingContactFirstName |    string |    Billing contact first name info |    M/O
+|    billingContactLastName |    string |    Billing contact last name info |    M/O
+|    billingAddressCity |    string |    Billing address city info |    M/O
+|    billingAddressCountry |    string |    Billing address country info |    M/O
+|    billingAddressPostalCode |    string |    Billing address postal code info |    M/O
+|    billingAddressStreet |    string |    Billing address street info |    M/O
+|    termsAndConditionsRead |    boolean |    Is T&C document been read |    M
+|====
+
+[[Network]]
+==== Network
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    NetworkId |    string |    EVSE Network id |    M
+|    NetworkName |    string |    EVSE Network name |    M
+|    GroupCount |    integer |    EVSE Group count |    M
+|    EvseCount |    integer |    EVSE count |    M
+|====
+
+[[Pricing]]
+==== Pricing
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    GroupId |    string |    EVSE Group id |    M
+|    GroupName |    string |    EVSE Group name |    M
+|    Currency |    string |    Pricing currency |    M
+|    Days |    array <<Day>> |    List of days of the week with tariffs |    M
+|====
+
+[[Day]]
+==== Day
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Day |    enum |    Day of the week: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY |    M
+|    Tariffs |    array <<Tariff>> |    Tariffs for a specific day |    M
+|====
+
+[[Tariff]]
+==== Tariff
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Name |    string |    Tariff name |    M
+|    StartTime |    string |    Time slot start time; format - time |    M
+|    EndTime |    string |    Time slot end time; format - time |    M
+|    PricingComponents |    array <<PricingComponent>> |    Pricing components for the tariff |    M
+|====
+
+[[PricingComponent]]
+==== PricingComponent
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    Type |    string |    Pricing component type |    M
+|    ReferenceUnit |    string |    Pricing component reference unit |    M
+|    Cost |    number |    Pricing component cost |    M
+|    FeeInitiated |    string |    Pricing component parking fee initialization type |    O
+|    GracePeriod |    integer |    Pricing component grace period |    O
+|====

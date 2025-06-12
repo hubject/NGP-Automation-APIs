@@ -59,7 +59,7 @@ CPOs can adjust tariffs dynamically in their own backend systems and push update
 |    ownerPartnerId    |    string    |    Owner internal id   |    M
 |    partnerInternalId    |    string    |    Offer name   |    M
 |    externalPartnerId    |    string    |    Owner external id   |    M
-|    name    |    string    |    Automatically generated name - contains Offerer Partner Name, Service Type and Type.   |    M
+|    name    |    string    |    Automatically generated name - contains Offerer Partner Name, Service Type and Type   |    M
 |    description    |    string    |    Offer description    |    M
 |    serviceTypeVersion    |    <<ServiceTypeVersion>>    |    Service type version    |    M
 |    offerToAll    |    boolean    |    Is offer to all    |    M
@@ -158,4 +158,33 @@ CPOs can adjust tariffs dynamically in their own backend systems and push update
 |    startTime |    string |    Time slot start time; format - time |    M
 |    endTime |    string |    Time slot end time; format - time |    M
 |    tariffName |    string |    Tariff name of one of the created tariffs |    M
+|====
+
+[[ServiceTypeVersion]]
+==== ServiceTypeVersion
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    serviceTypeId |    integer |    Type id: 1, 10 |    M
+|    serviceTypeName |    string |    Type name: Authorization, Reservation |    M
+|    serviceTypeVersionNumber |    integer |    Version number: 1 |    M
+|====
+
+[[TwoStepRequiredMasterDataFields]]
+==== TwoStepRequiredMasterDataFields
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    taxId |    boolean |    Is Tax id required |    M/O
+|    brandName |    boolean |    Is brand name required |    M/O
+|    billingContactEmail |    boolean |    Is billing contact email required |    M/O
+|    billingContactPhone |    boolean |    Is billing contact phone required |    M/O
+|    billingContactFirstName |    boolean |    Is billing contact first name required |    M/O
+|    billingContactLastName |    boolean |    Is billing contact last name required |    M/O
+|    billingAddressCity |    boolean |    Is billing address city required |    M/O
+|    billingAddressCountry |    boolean |    Is billing address country required |    M/O
+|    billingAddressPostalCode |    boolean |    Is billing address postal code required |    M/O
+|    billingAddressStreet |    boolean |    Is billing address street required |    M/O
 |====
