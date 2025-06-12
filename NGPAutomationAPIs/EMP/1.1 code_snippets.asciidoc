@@ -27,7 +27,7 @@ IMPORTANT: All the values provided in this Code Snippets are for demonstration p
     {
         "ContactFirstName": "ger",
         "ContactLastName": "sim",
-        "Email": "gerasim.simeonov@hubject.com",
+        "Email": "hbsportalmail+gps@gmail.com",
         "SupportEmail": "hbsportalmail+gps011@gmail.com",
         "EmergencyEmail": "hbsportalmail+gps011@gmail.com",
         "B2BPhone": "007"

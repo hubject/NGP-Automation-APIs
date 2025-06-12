@@ -16,7 +16,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 
 2. EVSE Network API:
 
-- Creating an EVSE Network with EVSE Groups and EVSEs
+- Creating an EVSE Network with EVSE Groups and assign EVSEs to them
 
 3. Upload Terms & Conditions (PDF) API:
 
