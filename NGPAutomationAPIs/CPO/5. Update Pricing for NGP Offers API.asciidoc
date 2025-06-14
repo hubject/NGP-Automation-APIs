@@ -17,6 +17,8 @@ CPOs can adjust tariffs dynamically in their own backend systems and push update
 - QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/{serviceOfferId}
 - PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/{serviceOfferId}
 
+Rate limit: 50
+
 [[URIParameters]]
 ==== URI Parameters
 

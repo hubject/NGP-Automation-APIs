@@ -23,6 +23,8 @@ This reduces operational errors and increases speed-to-market when publishing ne
 - QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers
 - PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers
 
+Rate limit: 50
+
 [[URIParameters]]
 ==== URI Parameters
 

@@ -17,6 +17,8 @@ The T&C API is only needed if CPO wants to attach the document for a offer that 
 - QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
 - PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/attachments
 
+Rate limit: 6
+
 [[URIParameters]]
 ==== URI Parameters
 

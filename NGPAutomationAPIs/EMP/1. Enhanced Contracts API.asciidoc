@@ -16,6 +16,8 @@ Gives EMPs better visibility into the cost structure of their subscribed offers,
 - QA env: https://service-qa.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
 - PROD env: https://service.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}
 
+Rate limit: 50
+
 [[URIParameters]]
 ==== URI Parameters
 

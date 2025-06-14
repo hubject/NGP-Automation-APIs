@@ -17,6 +17,8 @@ This transparency helps CPOs keep internal records updated and improves downstre
 - QA env: https://service-qa.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/info
 - PROD env: https://service.hubject.com/api/partner/v1/operators/{operatorId}/service-offers/info
 
+Rate limit: 50
+
 [[URIParameters]]
 ==== URI Parameters
 
