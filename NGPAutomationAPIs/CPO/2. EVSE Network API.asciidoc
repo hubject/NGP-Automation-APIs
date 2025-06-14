@@ -14,6 +14,8 @@ API for creating EVSE Network, EVSE Groups, and assign EVSEs to these groups.
 - QA env: https://service-qa.hubject.com/api/evsenetwork/v1/operators/{operatorId}/networks
 - PROD env: https://service.hubject.com/api/evsenetwork/v1/operators/{operatorId}/networks
 
+Rate limit: 50
+
 [[URIParameters]]
 ==== URI Parameters
 
