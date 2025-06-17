@@ -1,0 +1,93 @@
+image::images/hubjectlogo.png[float="right",align="right"]
+
+[[services_and_operations]]
+== Services and Operations
+
+[[ContractsEvsesInfo]]
+=== Contracts EVSEs Info
+
+Allows EMPs to fetch a paginated list of EVSEs belonging to a particular EVSE Group, within an EVSE Network where the subscribed NGP offer resides.
+
+[[Dependencies]]
+==== Dependencies:
+
+1. Enhanced Contracts API - required to get service offer, EVSE network, and EVSE Group info;
+
+[[Endpoints]]
+=== GET Endpoints:
+
+- QA env: https://service-qa.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}/service-offers/{serviceOfferId}/networks/{networkId}/groups/{groupId}/evses?page=0&size=20
+- PROD env: https://service.hubject.com/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}/service-offers/{serviceOfferId}/networks/{networkId}/groups/{groupId}/evses?page=0&size=20
+
+Rate limit: 60
+
+[[URIParameters]]
+==== URI Parameters
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    Mandatory/Optional
+|    providerId    |    string    |    EMP external Id    |    M
+|    operatorId    |    string    |    CPO external Id    |    M
+|    serviceOfferId    |    string    |    Service Offer Id    |    M
+|    networkId    |    string    |    Network Id    |    M
+|    groupId    |    string    |    Group Id    |    M
+|    page    |    string    |    Default page value is '0' (the first page)    |    O/M
+|    size    |    string    |    Default page size is '20'    |    O
+|====
+
+[[ResponseBody]]
+=== Response Body
+
+[%header]
+|===
+|    Name    |    Data Type    |    Description    |    M/O
+|    content    |    array <<EVSE>>    |    EVSE IDs    |    M
+|    empty    |    boolean    |    Current page contains no content    |    M
+|    first    |    boolean    |    Is the first page in the result set    |    M
+|    last    |    boolean    |    Is the last page in the result set    |    M
+|    number    |    integer    |    The zero-based index of the current page (e.g., 0 is the first page)    |    M
+|    numberOfElements    |    integer    |    The number of items returned on this page (can be less than 'size')    |    M
+|    pageable    |    <<Pageable>>    |    Pageable    |    M
+|    size    |    integer    |    The maximum number of items per page (page size)    |    M
+|    sort    |    <<Sort>>     |    Sort    |    M
+|    totalElements    |    integer    |    The total number of elements across all pages.    |    M
+|    totalPages    |    integer    |    The total number of pages available    |    M
+|===
+
+[[PayloadObjects]]
+==== PayloadObjects:
+
+[[EVSE]]
+==== EVSE
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    evseId |    string |    EVSE Id |    M
+|====
+
+[[Pageable]]
+==== Pageable
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    offset |    integer |    The index of the first element on this page in the entire result set (e.g., page 0 with size 20 → offset = 0) |    M
+|    pageNumber |    integer |    Same as 'number', the page index |    M
+|    pageSize |    integer |    Same as 'size', how many items per page |    M
+|    paged |    boolean |    Pagination was requested |    M
+|    sort    |    <<Sort>>     |    Sort    |    M
+|    unpaged |    boolean |    No pagination was applied |    M
+|====
+
+[[Sort]]
+==== Sort
+
+[%header]
+|====
+|    Name    |    Data Type    |    Description    |    M/O
+|    empty |    boolean |    No sorting was specified |    M
+|    sorted |    boolean |   Sorting was applied |    M
+|    unsorted |    boolean |    Results are not sorted |    M
+|====

@@ -3,7 +3,7 @@
 
 IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
 
-[[ContractEnhanced]]
+[[EnhancedContracts]]
 === Enhanced Contracts
 
 ==== Response Body:

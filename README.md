@@ -41,3 +41,7 @@ Authentication and authorization is done through a valid contract (SSL certifica
 
 - Improves the existing Contract API to allow EMPs to pull pricing and tariff information for all NGP offers they are subscribed to, including data tied to
   specific EVSE Groups, EVSE Network details and CPO contact data.
+
+2. Contracts EVSEs API:
+
+- Allows EMPs to fetch a paginated list of EVSEs belonging to a particular EVSE Group, within an EVSE Network where the subscribed NGP offer resides.
