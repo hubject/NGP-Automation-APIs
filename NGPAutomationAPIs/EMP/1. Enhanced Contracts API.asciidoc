@@ -3,7 +3,7 @@ image::images/hubjectlogo.png[float="right",align="right"]
 [[services_and_operations]]
 == Services and Operations
 
-[[ContractEnhancedInfo]]
+[[EnhancedContractsInfo]]
 === Enhanced Contracts Info
 
 Allows EMPs to view tariff and pricing details linked to EVSE Groups for all active NGP subscriptions.

@@ -1,0 +1,66 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[ContractsEvses]]
+=== Contracts EVSEs
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "content": [
+        {
+            "evseId": "GS*GPS*EATCP1239115*3U41ZO"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC3837334*SSSSSS"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC6"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC777"
+        },
+        {
+            "evseId": "GS*GPS*E99FE832"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC3217334*SSSSSS"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC6637334"
+        },
+        {
+            "evseId": "GS*GPS*EEAPC3237334*SSSSSS"
+        }
+    ],
+    "empty": false,
+    "first": true,
+    "last": true,
+    "number": 0,
+    "numberOfElements": 8,
+    "pageable": {
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 20,
+        "paged": true,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "unpaged": false
+    },
+    "size": 20,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "totalElements": 8,
+    "totalPages": 1
+}
+----
