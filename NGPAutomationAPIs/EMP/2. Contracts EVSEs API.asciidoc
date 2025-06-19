@@ -11,7 +11,7 @@ Allows EMPs to fetch a paginated list of EVSEs belonging to a particular EVSE Gr
 [[Dependencies]]
 ==== Dependencies:
 
-1. Enhanced Contracts API - required to get service offer, EVSE network, and EVSE Group IDs
+1. Enhanced Contracts API - required to get service offer, EVSE network, and EVSE Group IDs from the respective objects: Offers -> OfferDetails, Offers -> NetworkDetails, Offers -> Pricing -> price object
 
 [[Endpoints]]
 === GET Endpoints:
