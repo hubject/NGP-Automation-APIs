@@ -98,7 +98,7 @@ Rate limit: 50
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    M/O
-|    name |    string |    Tariff name |    M
+|    name |    string |    Tariff name; must be unique |    M
 |    currency |    string |    Tariff currency |    M
 |    pricingComponents |    array <<PricingComponent>> |    Pricing components for the tariff |    M
 |====

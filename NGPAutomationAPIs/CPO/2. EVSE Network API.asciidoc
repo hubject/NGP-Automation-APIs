@@ -31,7 +31,7 @@ Rate limit: 50
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    M/O
-|    evseNetworkName    |    string    |    EVSE network name    |    M
+|    evseNetworkName    |    string    |    EVSE network name; must be unique    |    M
 |    evseNetworkDescription    |    string    |    Network description    |    O
 |    evseGroups    |    array <<EvseGroup>>    |    Service offer name    |    M
 |====
