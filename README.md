@@ -1,12 +1,15 @@
 # NGP Automation APIs
 
-To support greater automation and operational efficiency for CPOs and EMPs, the following APIs are being developed and enhanced to streamline how NGP service
-offers are created, maintained, and consumed within the HBS platform.
+To support greater automation and operational efficiency for CPOs and EMPs, a suite of APIs has been developed and released to streamline how Next Generation Pricing (NGP) service offers are created, maintained, and consumed within the Hubject B2B Services (HBS) platform.
 
-These APIs reduce manual workload, minimize input errors, and enable seamless backend integration for pricing, service offers, and subscriptions—benefiting both
-CPOs and EMPs across the eRoaming ecosystem.
+These APIs reduce manual workload, minimize input errors, and enable seamless backend integration for pricing logic, service offer lifecycle management, and EMP subscription flows—benefiting both CPOs and EMPs across the eRoaming ecosystem.
+By integrating these APIs into their backend systems, market participants can:
+- Automate tariff creation and updates,
+- Align service offers with internal pricing tools and business contracts,
+- Maintain better visibility into offer states and subscription activity,
+- Improve time-to-market and accuracy of pricing-related data.
 
-Authentication and authorization is done through a valid contract (SSL certificate) between Hubject and the CPO (or EMP) for the provided service APIs.
+Authentication and authorization for these APIs are handled through secure SSL certificate-based access, established via a valid intercharge contract between Hubject and the respective CPO or EMP.
 
 ## CPO APIs:
 
