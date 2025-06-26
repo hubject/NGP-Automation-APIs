@@ -38,6 +38,10 @@ Authentication and authorization for these APIs are handled through secure SSL c
 - Provides CPOs with a way to retrieve detailed information about active NGP offers and subscriptions, including EMP subscriber data, network and billing
   details.
 
+7. Extract Historical Versions Offer Details API:
+
+- Lets CPOs retrieve detailed historical versions information for a particular Unlimited Active NGP service offer that has previous pricing versions.
+
 ## EMP APIs:
 
 1. Enhanced Contracts API:

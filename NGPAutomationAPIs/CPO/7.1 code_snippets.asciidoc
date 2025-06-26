@@ -1,0 +1,230 @@
+[[codeSnippets]]
+== Code Snippets
+
+IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+
+[[ExtractHistoricalVersionsOfferDetails]]
+=== Extract Historical Versions Offer Details
+
+==== Response Body:
+
+[source,JSON]
+----
+{
+    "offersInfo": [
+        {
+            "serviceOffer": {
+                "createdBy": "SYSTEM",
+                "createdOn": "2025-05-30T10:26:36.672571Z",
+                "lastModifiedBy": "SYSTEM",
+                "lastModificationDate": "2025-05-30T13:29:25.916698Z",
+                "id": "2c918086971fd215019720bab57a0007",
+                "ownerPartnerId": "2c918082904bf2b90190590ac5ab0a32",
+                "partnerInternalId": "rrrrrrrrrr",
+                "externalPartnerId": "GS*GPS",
+                "name": "geroCPOtest_Authorization_OfferToAll",
+                "description": "rrrrrrrrrr",
+                "serviceTypeVersion": {
+                    "serviceTypeId": 1,
+                    "serviceTypeName": "Authorization",
+                    "serviceTypeVersionNumber": 1
+                },
+                "offerToAll": true,
+                "subscriberPartnerIds": [],
+                "nrOfActiveSubscriptions": 0,
+                "nrOfChargingPoints": null,
+                "status": "CANCELLED",
+                "pricingType": "NGP",
+                "defaultPricePerRefUnit": null,
+                "currency": null,
+                "priceReferenceUnit": null,
+                "minimumTerm": 7,
+                "cancellationPeriod": 33,
+                "periodOfNotice": 0,
+                "periodOfNoticeMessage": null,
+                "attachments": [
+                    {
+                        "id": "2c918087971fd0c0019720bab8730096",
+                        "type": "pdf",
+                        "s3Key": "CPO_GS*GPS/Lab_Guide_-_Assign_IAM_Permissions_7Sja8r.pdf"
+                    }
+                ],
+                "validFrom": "2025-06-12T21:00:00Z",
+                "validTo": "+13544-01-20T23:59:59.999Z",
+                "cancellationTo": "2025-07-16T23:59:59.999Z",
+                "unlimited": true,
+                "leadTime": 33,
+                "version": 0,
+                "originalServiceOfferId": "2c918086971fd215019720bab57a0007",
+                "originalValidFrom": "2025-06-12T21:00:00Z",
+                "previousServiceOfferId": null,
+                "nextServiceOfferId": "402881889720bb78019720bd47880001",
+                "productPricingDTOSet": [],
+                "nrOfPendingSubscriptions": 0,
+                "twoStepProcess": true,
+                "twoStepRequiredMasterDataFields": {
+                    "taxId": false,
+                    "brandName": true,
+                    "billingContactEmail": false,
+                    "billingContactPhone": false,
+                    "billingContactFirstName": false,
+                    "billingContactLastName": false,
+                    "billingAddressCity": false,
+                    "billingAddressCountry": false,
+                    "billingAddressPostalCode": false,
+                    "billingAddressStreet": false
+                }
+            },
+            "subscriptions": [],
+            "network": {
+                "networkId": "2c91808496d2ed7a0196d34daca70008",
+                "networkName": "dude network",
+                "groupCount": 1,
+                "evseCount": 2
+            },
+            "pricingDetails": [
+                {
+                    "groupId": "2c91808496d2ed7a0196d34dacc30009",
+                    "groupName": "dude group",
+                    "currency": "BGN",
+                    "days": [
+                        {
+                            "Day": "WEDNESDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SATURDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "MONDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "FRIDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "THURSDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "SUNDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "Day": "TUESDAY",
+                            "Tariffs": [
+                                {
+                                    "Name": "rrrrrrr",
+                                    "StartTime": "00:00:00",
+                                    "EndTime": "23:59:59",
+                                    "PricingComponents": [
+                                        {
+                                            "Type": "CHARGING_ENERGY",
+                                            "ReferenceUnit": "KILOWATT_HOUR",
+                                            "Cost": 2.500,
+                                            "FeeInitiated": null,
+                                            "GracePeriod": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+----
