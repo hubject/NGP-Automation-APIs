@@ -1,7 +1,7 @@
 {
     "info": {
         "version": "1.0",
-        "title": "Contracts API"
+        "title": "Contracts APIs"
     },
     "paths": {
         "/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}": {
@@ -303,11 +303,9 @@
                     "type": "string",
                     "description": "Pricing components type",
                     "enum": [
-                        "CHARGING",
                         "CHARGING_ENERGY",
                         "CHARGING_TIME",
                         "PARKING",
-                        "BLOCKING_FEE",
                         "SESSION"
                     ]
                 }
@@ -468,9 +466,6 @@
                 "PricingType": {
                     "type": "string",
                     "enum": [
-                        "STANDARD",
-                        "DYNAMIC",
-                        "PRODUCT_PRICING",
                         "NGP"
                     ]
                 },
@@ -483,10 +478,7 @@
                 "ServiceOfferStatus": {
                     "type": "string",
                     "enum": [
-                        "PENDING",
-                        "ACTIVE",
-                        "CANCELLED",
-                        "INACTIVE"
+                        "ACTIVE"
                     ]
                 },
                 "ServiceTypeName": {
@@ -648,16 +640,7 @@
                 "SubscriptionStatus": {
                     "type": "string",
                     "enum": [
-                        "INACTIVE",
-                        "PENDING",
-                        "REJECTED",
-                        "SUBSCRIBED",
-                        "INACTIVE_CANCELLED",
-                        "CANCELLED",
-                        "INACTIVE_UNSUBSCRIBED",
-                        "UNSUBSCRIBED",
-                        "UNDER_REVIEW",
-                        "NOT_APPROVED"
+                        "SUBSCRIBED"
                     ]
                 },
                 "ValidFrom": {
