@@ -11,7 +11,10 @@ By integrating these APIs into their backend systems, market participants can:
 
 Authentication and authorization for these APIs are handled through secure SSL certificate-based access, established via a valid intercharge contract between Hubject and the respective CPO or EMP.
 
-## CPO APIs:
+Current APIs version is v1.
+
+## CPO APIs
+### v1:
 
 1. EVSE Assignment API:
 
@@ -42,7 +45,9 @@ Authentication and authorization for these APIs are handled through secure SSL c
 
 - Lets CPOs retrieve detailed historical versions information for a particular Unlimited Active NGP service offer that has previous pricing versions.
 
-## EMP APIs:
+## EMP APIs
+
+### v1:
 
 1. Enhanced Contracts API:
 
