@@ -1,0 +1,280 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "EVSE APIs"
+  },
+  "paths": {
+    "/api/evsenetwork/v1/operators/{externalOperatorId}/network": {
+      "put": {
+        "summary": "Assign EVSEs to groups",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalOperatorId",
+            "in": "path",
+            "description": "externalOperatorId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "networkAssignmentDTO",
+            "description": "networkAssignmentDTO",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkAssignmentDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NetworkAssignmentDTO"
+            }
+          },
+          "201": {
+            "description": "Evses has been assigned to a groups",
+            "schema": {
+              "$ref": "#/definitions/NetworkAssignmentDTO"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/FaultBody"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Data not found",
+            "schema": {
+              "$ref": "#/definitions/FaultBody"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/evsenetwork/v1/operators/{externalOperatorId}/networks": {
+      "post": {
+        "summary": "Create EVSE Network",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createRequestDTO",
+            "description": "createRequestDTO",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EvseNetworkRequestDTO"
+            }
+          },
+          {
+            "name": "externalOperatorId",
+            "in": "path",
+            "description": "externalOperatorId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/EvseNetworkResponseDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "EvseGroupDTO": {
+      "type": "object",
+      "properties": {
+        "evseIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "groupDescription": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 250
+        },
+        "groupName": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 50
+        }
+      },
+      "title": "EvseGroupDTO"
+    },
+    "EvseGroupResponseDTO": {
+      "type": "object",
+      "properties": {
+        "evseIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "groupDescription": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "EvseGroupResponseDTO"
+    },
+    "EvseNetworkRequestDTO": {
+      "type": "object",
+      "properties": {
+        "evseGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EvseGroupDTO"
+          }
+        },
+        "evseNetworkDescription": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 250
+        },
+        "evseNetworkName": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 50
+        }
+      },
+      "title": "EvseNetworkRequestDTO"
+    },
+    "EvseNetworkResponseDTO": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evseGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EvseGroupResponseDTO"
+          }
+        },
+        "evseNetworkDescription": {
+          "type": "string"
+        },
+        "evseNetworkName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "EvseNetworkResponseDTO"
+    },
+    "FaultBody": {
+      "type": "object",
+      "properties": {
+        "extendedInfo": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FieldValidationError"
+          }
+        }
+      },
+      "title": "FaultBody",
+      "description": "FaultBody model"
+    },
+    "FieldValidationError": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "fieldReference": {
+          "type": "string"
+        }
+      },
+      "title": "FieldValidationError",
+      "description": "FieldValidationError model"
+    },
+    "GroupsAssignmentDTO": {
+      "type": "object",
+      "required": [
+        "Evses",
+        "GroupName"
+      ],
+      "properties": {
+        "Evses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "GroupName": {
+          "type": "string"
+        }
+      },
+      "title": "GroupsAssignmentDTO"
+    },
+    "NetworkAssignmentDTO": {
+      "type": "object",
+      "required": [
+        "GroupsAssignments",
+        "NetworkName"
+      ],
+      "properties": {
+        "GroupsAssignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupsAssignmentDTO"
+          }
+        },
+        "NetworkName": {
+          "type": "string"
+        }
+      },
+      "title": "NetworkAssignmentDTO"
+    }
+  }
+}

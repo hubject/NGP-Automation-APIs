@@ -1,4 +1,4 @@
-image::images/hubjectlogo.png[float="right",align="right"]
+image::../images/hubjectlogo.png[float="right",align="right"]
 
 [[services_and_operations]]
 == Services and Operations

@@ -1,0 +1,1606 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "NGP APIs"
+  },
+  "paths": {
+    "/api/partner/v1/operators/{externalID}/service-offers": {
+      "post": {
+        "summary": "Create a service offer",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalID",
+            "in": "path",
+            "description": "externalID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "offerCreateRequest",
+            "description": "offerCreateRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NGP"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/ServiceOfferDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/partner/v1/operators/{externalID}/service-offers/attachments": {
+      "post": {
+        "summary": "Upload service offer T&C document",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalID",
+            "in": "path",
+            "description": "externalID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "attachmentType",
+            "in": "query",
+            "description": "attachmentType",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/AttachmentUploadResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/partner/v1/operators/{externalID}/service-offers/info": {
+      "get": {
+        "summary": "Extract active NGP service offers info",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalID",
+            "in": "path",
+            "description": "externalID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActiveNgpOfferDetailsDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/partner/v1/operators/{externalID}/service-offers/{serviceOfferId}": {
+      "put": {
+        "summary": "Update a service offer",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalID",
+            "in": "path",
+            "description": "externalID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "serviceOfferId",
+            "in": "path",
+            "description": "serviceOfferId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "offerUpdateRequest",
+            "description": "offerUpdateRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UnlimitedNgpUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ServiceOfferDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/partner/v1/operators/{externalID}/service-offers/{serviceOfferId}/historical-versions-info": {
+      "get": {
+        "summary": "Extract historical versions info of an active NGP service offer",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "externalID",
+            "in": "path",
+            "description": "externalID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "serviceOfferId",
+            "in": "path",
+            "description": "serviceOfferId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActiveNgpOfferDetailsDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ActiveNgpOfferDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "offersInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceOfferInfoDTO"
+          }
+        }
+      }
+    },
+    "AttachmentDTO": {
+      "type": "object",
+      "required": [
+        "id",
+        "s3Key",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "An auto-generated id for the attachment so that it can be referenced (eg. for downloading)",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "s3Key": {
+          "type": "string",
+          "description": "The key to the file to retrieve it from S3 service",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the attachment",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "description": "Attachment model"
+    },
+    "AttachmentUploadResponse": {
+      "type": "object",
+      "properties": {
+        "originalFileName": {
+          "type": "string"
+        },
+        "uploadedAttachmentId": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateProductDTO": {
+      "type": "object",
+      "required": [
+        "product"
+      ],
+      "properties": {
+        "groupId": {
+          "type": "string"
+        },
+        "product": {
+          "$ref": "#/definitions/ProductDTO"
+        }
+      }
+    },
+    "CreateTariffRequestDTO": {
+      "type": "object",
+      "required": [
+        "currency"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "enum": [
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RUR",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STD",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "USN",
+            "USS",
+            "UYI",
+            "UYU",
+            "UZS",
+            "VEF",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "pricingComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingComponentWebDto"
+          }
+        }
+      }
+    },
+    "EvsePricingComponent": {
+      "type": "object",
+      "properties": {
+        "Cost": {
+          "type": "number",
+          "description": "Pricing components cost"
+        },
+        "FeeInitiated": {
+          "type": "string",
+          "description": "Pricing components parking fee initialization type",
+          "enum": [
+            "SESSION_START",
+            "CHARGING_END"
+          ]
+        },
+        "GracePeriod": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Pricing components grace period"
+        },
+        "ReferenceUnit": {
+          "type": "string",
+          "description": "Pricing components reference unit",
+          "enum": [
+            "MINUTE",
+            "HOUR",
+            "KILOWATT_HOUR",
+            "NONE"
+          ]
+        },
+        "Type": {
+          "type": "string",
+          "description": "Pricing components type",
+          "enum": [
+            "CHARGING_ENERGY",
+            "CHARGING_TIME",
+            "PARKING",
+            "SESSION"
+          ]
+        }
+      }
+    },
+    "EvsePricingDay": {
+      "type": "object",
+      "properties": {
+        "Day": {
+          "type": "string",
+          "description": "Day of the week",
+          "enum": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY",
+            "SATURDAY",
+            "SUNDAY"
+          ]
+        },
+        "Tariffs": {
+          "type": "array",
+          "description": "Tariffs for a specific day",
+          "items": {
+            "$ref": "#/definitions/EvsePricingTariff"
+          }
+        }
+      }
+    },
+    "EvsePricingTariff": {
+      "type": "object",
+      "properties": {
+        "EndTime": {
+          "description": "Time slot end time",
+          "$ref": "#/definitions/LocalTime"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Tariff name"
+        },
+        "PricingComponents": {
+          "type": "array",
+          "description": "Pricing components for the tariff",
+          "items": {
+            "$ref": "#/definitions/EvsePricingComponent"
+          }
+        },
+        "StartTime": {
+          "description": "Time slot start time",
+          "$ref": "#/definitions/LocalTime"
+        }
+      }
+    },
+    "LocalTime": {
+      "type": "object",
+      "properties": {
+        "hour": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minute": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nano": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "second": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NGP": {
+      "type": "object",
+      "required": [
+        "cancellationPeriod",
+        "minimumTerm",
+        "offerToAll",
+        "partnerInternalId",
+        "serviceTypeVersion",
+        "validFrom",
+        "validTo"
+      ],
+      "properties": {
+        "cancellationPeriod": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of days after cancellation of the service offer while subscriptions to this service offer are still active.",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the service offer. ",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "leadTime": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Unlimited Service offers lead time",
+          "minimum": 15,
+          "exclusiveMinimum": false
+        },
+        "minimumTerm": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimum number of days for subscriptions (a subscription cannot be cancelled if it is not live for at least that many days).",
+          "minimum": 1,
+          "maximum": 90,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "networkId": {
+          "type": "string"
+        },
+        "offerToAll": {
+          "type": "boolean",
+          "example": false,
+          "description": "Shows if the service offer is subscribable for anybody or it is subscribable only for some partners."
+        },
+        "partnerInternalId": {
+          "type": "string",
+          "description": "Identifier provided by the partner (not related to DB id).",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "periodOfNotice": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of days before the end of the service offer when subscribers should be notified. Must be null for unlimited service offers.",
+          "minimum": 0,
+          "exclusiveMinimum": false
+        },
+        "periodOfNoticeMessage": {
+          "type": "string",
+          "description": "The notification text for the notifications about the end of a service offer.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "pricingType": {
+          "type": "string",
+          "description": "Pricing type.",
+          "enum": [
+            "NGP"
+          ]
+        },
+        "serviceOfferId": {
+          "type": "string",
+          "description": "Identifier to be assigned to the new Service Offer entity (for NGP only)",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "serviceTypeVersion": {
+          "description": "Service type version of this service offer.",
+          "$ref": "#/definitions/ServiceTypeVersionReferenceDTO"
+        },
+        "subscriberPartnerIds": {
+          "type": "array",
+          "description": "Ids of partners for whom the service offer is subscribable in case of bilateral service offer, null otherwise.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateTariffRequestDTO"
+          }
+        },
+        "twoStepProcess": {
+          "type": "boolean",
+          "example": false,
+          "description": "Does the service offer require two-step process acceptance?"
+        },
+        "twoStepRequiredMasterDataFields": {
+          "description": "Two Step Required Master Data Fields for service offer for two step process acceptance.",
+          "$ref": "#/definitions/TwoStepRequiredMasterDataFields"
+        },
+        "unlimited": {
+          "type": "boolean",
+          "example": false,
+          "description": "Is the service offer is unlimited service offer."
+        },
+        "uploadedAttachmentId": {
+          "type": "string"
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The service offer is valid from that time."
+        },
+        "validTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The service offer is valid until that time."
+        }
+      },
+      "description": "Service offer for NGP pricing"
+    },
+    "NetworkDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "evseCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "groupCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "networkId": {
+          "type": "string"
+        },
+        "networkName": {
+          "type": "string"
+        }
+      }
+    },
+    "PricingComponentWebDto": {
+      "type": "object",
+      "required": [
+        "cost",
+        "referenceUnit",
+        "type"
+      ],
+      "properties": {
+        "cost": {
+          "type": "number"
+        },
+        "gracePeriod": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "referenceUnit": {
+          "type": "string",
+          "enum": [
+            "MINUTE",
+            "HOUR",
+            "KILOWATT_HOUR",
+            "NONE"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "CHARGING_ENERGY",
+            "CHARGING_TIME",
+            "PARKING",
+            "SESSION"
+          ]
+        }
+      }
+    },
+    "PricingDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "days": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EvsePricingDay"
+          }
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductDTO": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "enum": [
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RUR",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STD",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "USN",
+            "USS",
+            "UYI",
+            "UYU",
+            "UZS",
+            "VEF",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL"
+          ]
+        },
+        "timePlans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimePlanDTO"
+          }
+        }
+      }
+    },
+    "ServiceOfferDTO": {
+      "type": "object",
+      "required": [
+        "serviceTypeVersion",
+        "validFrom",
+        "validTo"
+      ],
+      "properties": {
+        "attachments": {
+          "type": "array",
+          "description": "File attachments for the service offer.",
+          "items": {
+            "$ref": "#/definitions/AttachmentDTO"
+          }
+        },
+        "cancellationPeriod": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of days after cancellation of the service offer while subscriptions to this service offer are still active.",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "cancellationTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The service offer becomes inactive at this time (if set)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User id / SYSTEM of the modifier. The user id is sent by the portal in core request call"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The entity creation timestamp."
+        },
+        "currency": {
+          "type": "string"
+        },
+        "defaultPricePerRefUnit": {
+          "type": "number",
+          "description": "Price per reference unit.",
+          "minimum": 0,
+          "exclusiveMinimum": false
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the service offer. ",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "externalPartnerId": {
+          "type": "string",
+          "description": "External partner Id."
+        },
+        "id": {
+          "type": "string",
+          "description": "Auto-generated, internally used id for the partner.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "lastModificationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last entity modification timestamp."
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "User id / SYSTEM of the modifier. The user id is sent by the portal in core request call"
+        },
+        "leadTime": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Unlimited Service offers lead time"
+        },
+        "minimumTerm": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimum number of days for subscriptions (a subscription cannot be cancelled if it is not live for at least that many days).",
+          "minimum": 1,
+          "maximum": 90,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "name": {
+          "type": "string",
+          "description": "Auto-generated name. ",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "nextServiceOfferId": {
+          "type": "string",
+          "description": "The unlimited service offer next service offer id"
+        },
+        "nrOfActiveSubscriptions": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of active subscriptions."
+        },
+        "nrOfChargingPoints": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of charging points."
+        },
+        "nrOfPendingSubscriptions": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of pending subscriptions."
+        },
+        "offerToAll": {
+          "type": "boolean",
+          "example": false,
+          "description": "Shows if the service offer is subscribable for anybody or it is subscribable only for some partners."
+        },
+        "originalServiceOfferId": {
+          "type": "string",
+          "description": "The unlimited service offer original service offer id"
+        },
+        "originalValidFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The original unlimited service offer valid from"
+        },
+        "ownerPartnerId": {
+          "type": "string",
+          "description": "Id of the partner who created the service offer.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "partnerInternalId": {
+          "type": "string",
+          "description": "Id provided by the partner.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "periodOfNotice": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of days before the end of the service offer when subscribers should be notified.",
+          "minimum": 0,
+          "exclusiveMinimum": false
+        },
+        "periodOfNoticeMessage": {
+          "type": "string",
+          "description": "The notification text for the notifications about the end of a service offer.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "previousServiceOfferId": {
+          "type": "string",
+          "description": "The unlimited service offer previous service offer id"
+        },
+        "priceReferenceUnit": {
+          "type": "string",
+          "description": "Price reference unit.",
+          "enum": [
+            "HOUR",
+            "KILOWATT_HOUR",
+            "MINUTE"
+          ]
+        },
+        "pricingType": {
+          "type": "string",
+          "description": "Pricing type",
+          "enum": [
+            "NGP"
+          ]
+        },
+        "productPricingDTOSet": {
+          "type": "string"
+        },
+        "serviceTypeVersion": {
+          "description": "Service type version of this service offer.",
+          "$ref": "#/definitions/ServiceTypeVersionReferenceDTO"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the service offer.",
+          "enum": [
+            "PENDING"
+          ]
+        },
+        "subscriberPartnerIds": {
+          "type": "array",
+          "description": "Ids of partners for whom the sevice offer is subscribable in case of bilateral service offer, null otherwise.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "twoStepProcess": {
+          "type": "boolean",
+          "example": false,
+          "description": "Does the service offer require two-step process acceptance?"
+        },
+        "twoStepRequiredMasterDataFields": {
+          "description": "Two Step Required Master Data Fields for service offer for two step process acceptance.",
+          "$ref": "#/definitions/TwoStepRequiredMasterDataFields"
+        },
+        "unlimited": {
+          "type": "boolean",
+          "example": false,
+          "description": "Is the service offer is unlimited service offer."
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The service offer is valid from that time."
+        },
+        "validTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The service offer is valid until that time."
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The version of the unlimited service offer"
+        }
+      },
+      "description": "ServiceOffer model"
+    },
+    "ServiceOfferInfoDTO": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "$ref": "#/definitions/NetworkDetailsDTO"
+        },
+        "pricingDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingDetailsDTO"
+          }
+        },
+        "serviceOffer": {
+          "$ref": "#/definitions/ServiceOfferDTO"
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubscriptionDTO"
+          }
+        }
+      }
+    },
+    "ServiceTypeVersionReferenceDTO": {
+      "type": "object",
+      "required": [
+        "serviceTypeId",
+        "serviceTypeVersionNumber"
+      ],
+      "properties": {
+        "serviceTypeId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Id of the service type of this service offer."
+        },
+        "serviceTypeName": {
+          "type": "string",
+          "description": "Name of the service type of this service offer.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "serviceTypeVersionNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Version number of the service type version.",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        }
+      },
+      "description": "ServiceTypeVersionReference model"
+    },
+    "SubscriptionDTO": {
+      "type": "object",
+      "properties": {
+        "cancellationTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The subscription becomes inactive at this time (if set)."
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User id / SYSTEM of the modifier. The user id is sent by the portal in core request call"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The entity creation timestamp."
+        },
+        "id": {
+          "type": "string",
+          "description": "Id for the subscription.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "lastModificationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last entity modification timestamp."
+        },
+        "lastModifiedBy": {
+          "type": "string",
+          "description": "User id / SYSTEM of the modifier. The user id is sent by the portal in core request call"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subscription.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "offererPartnerId": {
+          "type": "string",
+          "description": "Id of the offerer partner of the service offer. Use serviceOffer.ownerPartner.id to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "offererPartnerName": {
+          "type": "string",
+          "description": "(Optional) Name of the offerer partner of the service offer. Use serviceOffer.ownerPartner.partnerName to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "partnerInternalId": {
+          "type": "string",
+          "description": "Id provided by the partner.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "periodOfNotice": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of days before the end of the service offer when subscribers should be notified."
+        },
+        "periodOfNoticeMessage": {
+          "type": "string",
+          "description": "The notification text for the notifications about the end of a subscription.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "rejectedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the decline for the subscription."
+        },
+        "requestedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the request for the subscription."
+        },
+        "serviceOfferId": {
+          "type": "string",
+          "description": "Id of the serviceoffer. Use serviceOffer.id to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "serviceOfferName": {
+          "type": "string",
+          "description": "(Optional) Name of the service offer. Use serviceOffer.name to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "serviceTypeId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Id of the service type of the service offer. Use serviceOffer.serviceTypeVersion.serviceType.id to sort by this field."
+        },
+        "serviceTypeName": {
+          "type": "string",
+          "description": "(Optional) Name of the service type of the service offer. Use serviceOffer.serviceTypeVersion.serviceType.name to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the subscription.",
+          "enum": [
+            "SUBSCRIBED"
+          ]
+        },
+        "subscribeDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of creation of the subscription."
+        },
+        "subscriberPartnerExternalId": {
+          "type": "string",
+          "description": "External Partner id of the subscriber",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "subscriberPartnerId": {
+          "type": "string",
+          "description": "Partner id of the subscriber. Use subscriberPartner.id to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "subscriberPartnerName": {
+          "type": "string",
+          "description": "(Optional) Partner name of the subscriber. Use subscriberPartner.partnerName to sort by this field.",
+          "minLength": 0,
+          "maxLength": 255
+        },
+        "twoStepData": {
+          "description": "Two steps data for partner acceptance service offer.",
+          "$ref": "#/definitions/TwoStepData"
+        },
+        "twoStepErrorStatus": {
+          "type": "string",
+          "description": "Two steps data error status.",
+          "enum": [
+            "INCORRECT_DATA_FORMAT",
+            "INVALID_VAT_ID",
+            "BUSINESS_REQUIREMENTS_NOT_MATCHED",
+            "NOT_ELIGIBLE",
+            "OTHERS"
+          ]
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time from which the subscription is valid."
+        },
+        "validTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time until the subscription is active."
+        },
+        "wasSubscribed": {
+          "type": "boolean",
+          "example": false,
+          "description": "Was EMP ever subscribe to this service offer"
+        }
+      },
+      "description": "Subscription model"
+    },
+    "TimePlanDTO": {
+      "type": "object",
+      "properties": {
+        "daysOfTheWeek": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "MONDAY",
+              "TUESDAY",
+              "WEDNESDAY",
+              "THURSDAY",
+              "FRIDAY",
+              "SATURDAY",
+              "SUNDAY"
+            ]
+          }
+        },
+        "timeSlots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeSlotDTO"
+          }
+        }
+      }
+    },
+    "TimeSlotDTO": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "endTime": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "tariffName": {
+          "type": "string"
+        }
+      }
+    },
+    "TwoStepData": {
+      "type": "object",
+      "properties": {
+        "billingAddressCity": {
+          "type": "string"
+        },
+        "billingAddressCountry": {
+          "type": "string"
+        },
+        "billingAddressPostalCode": {
+          "type": "string"
+        },
+        "billingAddressStreet": {
+          "type": "string"
+        },
+        "billingContactEmail": {
+          "type": "string"
+        },
+        "billingContactFirstName": {
+          "type": "string"
+        },
+        "billingContactLastName": {
+          "type": "string"
+        },
+        "billingContactPhone": {
+          "type": "string"
+        },
+        "brandName": {
+          "type": "string"
+        },
+        "taxId": {
+          "type": "string"
+        },
+        "termsAndConditionsRead": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TwoStepRequiredMasterDataFields": {
+      "type": "object",
+      "properties": {
+        "billingAddressCity": {
+          "type": "boolean"
+        },
+        "billingAddressCountry": {
+          "type": "boolean"
+        },
+        "billingAddressPostalCode": {
+          "type": "boolean"
+        },
+        "billingAddressStreet": {
+          "type": "boolean"
+        },
+        "billingContactEmail": {
+          "type": "boolean"
+        },
+        "billingContactFirstName": {
+          "type": "boolean"
+        },
+        "billingContactLastName": {
+          "type": "boolean"
+        },
+        "billingContactPhone": {
+          "type": "boolean"
+        },
+        "brandName": {
+          "type": "boolean"
+        },
+        "taxId": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UnlimitedNgpUpdate": {
+      "type": "object",
+      "properties": {
+        "networkId": {
+          "type": "string"
+        },
+        "nextServiceOfferId": {
+          "type": "string",
+          "description": "Identifier to be assigned to the new Service Offer entity (for NGP only)",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "pricingDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateProductDTO"
+          }
+        },
+        "tariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateTariffRequestDTO"
+          }
+        },
+        "updateDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time to start the new pricing"
+        }
+      },
+      "description": "Service offer update for unlimited NGP pricing"
+    }
+  }
+}

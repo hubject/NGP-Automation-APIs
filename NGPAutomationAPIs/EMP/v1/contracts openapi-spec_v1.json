@@ -1,0 +1,658 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Contracts APIs"
+  },
+  "paths": {
+    "/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}": {
+      "get": {
+        "summary": "Fetch contracts details between provider and operator",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "providerId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "operatorId",
+            "in": "path",
+            "description": "operatorId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContractInfoDTO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Operator not found",
+            "schema": {
+              "$ref": "#/definitions/FaultBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/premium/contracts/v1/providers/{providerId}/operators/{operatorId}/service-offers/{serviceOfferId}/networks/{networkId}/groups/{groupId}/evses": {
+      "get": {
+        "summary": "Fetch EVSEs belonging to a Service Offer's Network's EVSE group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "providerId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "operatorId",
+            "in": "path",
+            "description": "operatorId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "serviceOfferId",
+            "in": "path",
+            "description": "serviceOfferId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "networkId",
+            "in": "path",
+            "description": "networkId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "groupId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number of the requested page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Size of a page",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageServiceOfferNetworkGroupEvse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Operator not found",
+            "schema": {
+              "$ref": "#/definitions/FaultBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BillingInfoDTO": {
+      "type": "object",
+      "properties": {
+        "BankAccount": {
+          "type": "string"
+        },
+        "BillingContactEmail": {
+          "type": "string"
+        },
+        "BillingContactFirstName": {
+          "type": "string"
+        },
+        "BillingContactLastName": {
+          "type": "string"
+        },
+        "BillingContactPhone": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "Street": {
+          "type": "string"
+        },
+        "TaxID": {
+          "type": "string"
+        }
+      }
+    },
+    "ContactDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "B2BPhone": {
+          "type": "string"
+        },
+        "ContactFirstName": {
+          "type": "string"
+        },
+        "ContactLastName": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "EmergencyEmail": {
+          "type": "string"
+        },
+        "SupportEmail": {
+          "type": "string"
+        }
+      }
+    },
+    "ContractInfoDTO": {
+      "type": "object",
+      "properties": {
+        "BillingInformation": {
+          "$ref": "#/definitions/BillingInfoDTO"
+        },
+        "CPOContactDetails": {
+          "$ref": "#/definitions/ContactDetailsDTO"
+        },
+        "CPOGeneralInformation": {
+          "$ref": "#/definitions/CpoGeneralInfoDTO"
+        },
+        "Offers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OfferInfoDTO"
+          }
+        }
+      }
+    },
+    "ContractPricingDTO": {
+      "type": "object",
+      "properties": {
+        "Currency": {
+          "type": "string"
+        },
+        "Days": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EvsePricingDay"
+          }
+        },
+        "GroupId": {
+          "type": "string"
+        },
+        "GroupName": {
+          "type": "string"
+        }
+      }
+    },
+    "CpoGeneralInfoDTO": {
+      "type": "object",
+      "properties": {
+        "CPOName": {
+          "type": "string"
+        },
+        "Countries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OperatorID": {
+          "type": "string"
+        },
+        "SubPartners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "EvsePricingComponent": {
+      "type": "object",
+      "properties": {
+        "Cost": {
+          "type": "number",
+          "description": "Pricing components cost"
+        },
+        "FeeInitiated": {
+          "type": "string",
+          "description": "Pricing components parking fee initialization type",
+          "enum": [
+            "SESSION_START",
+            "CHARGING_END"
+          ]
+        },
+        "GracePeriod": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Pricing components grace period"
+        },
+        "ReferenceUnit": {
+          "type": "string",
+          "description": "Pricing components reference unit",
+          "enum": [
+            "MINUTE",
+            "HOUR",
+            "KILOWATT_HOUR",
+            "NONE"
+          ]
+        },
+        "Type": {
+          "type": "string",
+          "description": "Pricing components type",
+          "enum": [
+            "CHARGING_ENERGY",
+            "CHARGING_TIME",
+            "PARKING",
+            "SESSION"
+          ]
+        }
+      }
+    },
+    "EvsePricingDay": {
+      "type": "object",
+      "properties": {
+        "Day": {
+          "type": "string",
+          "description": "Day of the week",
+          "enum": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY",
+            "SATURDAY",
+            "SUNDAY"
+          ]
+        },
+        "Tariffs": {
+          "type": "array",
+          "description": "Tariffs for a specific day",
+          "items": {
+            "$ref": "#/definitions/EvsePricingTariff"
+          }
+        }
+      }
+    },
+    "EvsePricingTariff": {
+      "type": "object",
+      "properties": {
+        "EndTime": {
+          "description": "Time slot end time",
+          "$ref": "#/definitions/LocalTime"
+        },
+        "Name": {
+          "type": "string",
+          "description": "Tariff name"
+        },
+        "PricingComponents": {
+          "type": "array",
+          "description": "Pricing components for the tariff",
+          "items": {
+            "$ref": "#/definitions/EvsePricingComponent"
+          }
+        },
+        "StartTime": {
+          "description": "Time slot start time",
+          "$ref": "#/definitions/LocalTime"
+        }
+      }
+    },
+    "FaultBody": {
+      "type": "object",
+      "properties": {
+        "extendedInfo": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FieldValidationError"
+          }
+        }
+      },
+      "description": "FaultBody model"
+    },
+    "FieldValidationError": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "fieldReference": {
+          "type": "string"
+        }
+      },
+      "description": "FieldValidationError model"
+    },
+    "LocalTime": {
+      "type": "object",
+      "properties": {
+        "hour": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minute": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nano": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "second": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NetworkDTO": {
+      "type": "object",
+      "properties": {
+        "EvseCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "GroupCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "NetworkId": {
+          "type": "string"
+        },
+        "NetworkName": {
+          "type": "string"
+        }
+      }
+    },
+    "OfferDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "CancellationPeriod": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "CancellationTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CreatedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "LeadTime": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MinimumTerm": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "OfferType": {
+          "type": "string",
+          "enum": [
+            "OFFER_TO_ALL",
+            "BILATERAL"
+          ]
+        },
+        "PricingType": {
+          "type": "string",
+          "enum": [
+            "NGP"
+          ]
+        },
+        "ServiceOfferId": {
+          "type": "string"
+        },
+        "ServiceOfferName": {
+          "type": "string"
+        },
+        "ServiceOfferStatus": {
+          "type": "string",
+          "enum": [
+            "ACTIVE"
+          ]
+        },
+        "ServiceTypeName": {
+          "type": "string"
+        },
+        "ValidFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ValidTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "OfferInfoDTO": {
+      "type": "object",
+      "properties": {
+        "NetworkDetails": {
+          "$ref": "#/definitions/NetworkDTO"
+        },
+        "OfferDetails": {
+          "$ref": "#/definitions/OfferDetailsDTO"
+        },
+        "Pricing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContractPricingDTO"
+          }
+        },
+        "SubscriptionDetails": {
+          "$ref": "#/definitions/SubscriptionDetailsDTO"
+        }
+      }
+    },
+    "PageServiceOfferNetworkGroupEvse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceOfferNetworkGroupEvse"
+          }
+        },
+        "empty": {
+          "type": "boolean",
+          "example": false
+        },
+        "first": {
+          "type": "boolean",
+          "example": false
+        },
+        "last": {
+          "type": "boolean",
+          "example": false
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfElements": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageable": {
+          "$ref": "#/definitions/Pageable"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "$ref": "#/definitions/Sort"
+        },
+        "totalElements": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Pageable": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paged": {
+          "type": "boolean",
+          "example": false
+        },
+        "sort": {
+          "$ref": "#/definitions/Sort"
+        },
+        "unpaged": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "ServiceOfferNetworkGroupEvse": {
+      "type": "object",
+      "properties": {
+        "evseId": {
+          "type": "string"
+        }
+      }
+    },
+    "Sort": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean",
+          "example": false
+        },
+        "sorted": {
+          "type": "boolean",
+          "example": false
+        },
+        "unsorted": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "SubscriptionDetailsDTO": {
+      "type": "object",
+      "properties": {
+        "PeriodOfNotice": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PeriodOfNoticeMessage": {
+          "type": "string"
+        },
+        "SubscriptionCancellationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SubscriptionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SubscriptionName": {
+          "type": "string"
+        },
+        "SubscriptionStatus": {
+          "type": "string",
+          "enum": [
+            "SUBSCRIBED"
+          ]
+        },
+        "ValidFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ValidTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
