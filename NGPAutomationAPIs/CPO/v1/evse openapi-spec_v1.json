@@ -69,7 +69,7 @@
     },
     "/api/evsenetwork/v1/operators/{externalOperatorId}/networks": {
       "post": {
-        "summary": "createEvseNetwork",
+        "summary": "Create EVSE Network",
         "consumes": [
           "application/json"
         ],

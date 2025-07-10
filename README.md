@@ -46,7 +46,6 @@ Current APIs version is v1.
 - Lets CPOs retrieve detailed historical versions information for a particular Unlimited Active NGP service offer that has previous pricing versions.
 
 ## EMP APIs
-
 ### v1:
 
 1. Enhanced Contracts API:
