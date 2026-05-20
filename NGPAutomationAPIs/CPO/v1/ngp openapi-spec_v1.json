@@ -544,7 +544,8 @@
             "CHARGING_ENERGY",
             "CHARGING_TIME",
             "PARKING",
-            "SESSION"
+            "SESSION",
+            "BLOCKING_FEE"
           ]
         }
       }
@@ -796,7 +797,8 @@
             "CHARGING_ENERGY",
             "CHARGING_TIME",
             "PARKING",
-            "SESSION"
+            "SESSION",
+            "BLOCKING_FEE"
           ]
         }
       }
