@@ -18,32 +18,32 @@ Current APIs version is v1.
 
 1. EVSE Assignment API:
 
-- Assign EVSEs to current EVSE Groups
+   - Assign EVSEs to current EVSE Groups
 
 2. EVSE Network API:
 
-- Creating an EVSE Network with EVSE Groups and assign EVSEs to them
+   - Creating an EVSE Network with EVSE Groups and assign EVSEs to them
 
 3. Upload Terms & Conditions (PDF) API:
 
-- Upload “Terms and Conditions” pdf document for to be created service offer
+   - Upload “Terms and Conditions” pdf document for to be created service offer
 
 4. Create NGP Service Offer API:
 
-- Enables CPOs to programmatically create new NGP service offers including detailed tariff, pricing, and subscription information.
+   - Enables CPOs to programmatically create new NGP service offers including detailed tariff, pricing, and subscription information.
 
 5. Update Pricing for NGP Offers API:
 
-- Allows CPOs to update the prices of existing NGP unlimited offers (both Bilateral and Offer-to-All)
+   - Allows CPOs to update the prices of existing NGP unlimited offers (both Bilateral and Offer-to-All)
 
 6. Extract Offer & Subscription Details API:
 
-- Provides CPOs with a way to retrieve detailed information about active NGP offers and subscriptions, including EMP subscriber data, network and billing
-  details.
+   - Provides CPOs with a way to retrieve detailed information about active NGP offers and subscriptions, including EMP subscriber data, network and billing
+     details.
 
 7. Extract Historical Versions Offer Details API:
 
-- Lets CPOs retrieve detailed historical versions information for a particular Unlimited Active NGP service offer that has previous pricing versions.
+   - Lets CPOs retrieve detailed historical versions information for a particular Unlimited Active NGP service offer that has previous pricing versions.
 
 ## EMP APIs
 ### v1:

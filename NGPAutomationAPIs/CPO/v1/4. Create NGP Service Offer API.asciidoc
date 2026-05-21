@@ -159,7 +159,7 @@ Rate limit: 50
 [%header]
 |====
 |    Name    |    Data Type    |    Description    |    M/O
-|    type |    string |    Pricing components type: CHARGING_ENERGY, CHARGING_TIME, PARKING, SESSION   |    M
+|    type |    string |    Pricing components type: CHARGING_ENERGY, CHARGING_TIME, PARKING, SESSION, BLOCKING_FEE   |    M
 |    referenceUnit |    string |    Pricing components reference unit: KILOWATT_HOUR, MINUTE, NONE  |    M
 |    cost |    number |    Pricing components cost |    M
 |    gracePeriod |    integer |    Pricing component grace period |    O
