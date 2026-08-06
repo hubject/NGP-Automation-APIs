@@ -8,7 +8,7 @@ image::../images/hubjectlogo.png[float="right",align="right"]
 
 API for assigning EVSEs to current EVSE Groups.
 
-If the network is in the draft, each subsequent API call will overwrite previous EVSE assignments: for example, if you initially assigned EVSE DE12345677 to Group 1 and you run the API again, listing EVSE DE12345677 under Group 2, the EVSE will be moved from Group 1 to Group 2. If the network is active, you can run the API only for unassigned EVSEs and all subsequent calls will not overwrite the assignment of EVSEs to groups that you already performed.
+When you assign EVSEs to a group, the API will rewrite the assignment for that specific group, but other groups remain untouched. For example, if you assign EVSEs to `group1`, only `group1` will be updated while `group2` and any other groups retain their existing assignments.
 
 [[Setup]]
 === Setup
