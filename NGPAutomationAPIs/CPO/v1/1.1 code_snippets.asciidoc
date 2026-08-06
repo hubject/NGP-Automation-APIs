@@ -1,42 +1,221 @@
 [[codeSnippets]]
 == Code Snippets
 
-IMPORTANT: All the values provided in this Code Snippets are for demonstration purposes.
+IMPORTANT: All the values provided in these Code Snippets are for demonstration purposes. Please change the external id, network name, group name, and EVSE id according to your setup.
 
-[[EVSEAssignment]]
-=== EVSE Assignment
+[[code_usecase1]]
+=== Use Case 1: Assign EVSEs to a Group
+
+Assign `DE*M11*E000001` and `DE*M11*E000002` EVSEs to `group1`.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
 
 ==== Request Body:
 
 [source,JSON]
 ----
 {
-    "NetworkName": "dude network",
-    "GroupsAssignments": [
-        {
-            "GroupName": "dude group",
-            "Evses": [
-                "GS*GPS*EEAPC666"
-            ]
-        }
-    ]
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group1",
+      "Evses": ["DE*M11*E000001", "DE*M11*E000002"]
+    }
+  ]
 }
 ----
 
-==== Response Body:
+[[code_usecase2]]
+=== Use Case 2: Assign EVSEs to Another Group
+
+Assign EVSEs to `group2`. `group1` should be untouched.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+==== Request Body:
 
 [source,JSON]
 ----
 {
-    "NetworkName": "dude network",
-    "GroupsAssignments": [
-        {
-            "GroupName": "dude group",
-            "Evses": [
-                "GS*GPS*EEAPC666",
-                "GS*GPS*EEAPC"
-            ]
-        }
-    ]
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group2",
+      "Evses": ["DE*M11*E000003", "DE*M11*E000004"]
+    }
+  ]
+}
+----
+
+[[code_usecase3]]
+=== Use Case 3: Unassign an EVSE from a Group
+
+Unassign `DE*M11*E000001` from `group1`.
+
+NOTE: There is no unassign API or instruction. We simply rewrite the EVSE assignment without `DE*M11*E000001`.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group1",
+      "Evses": ["DE*M11*E000002"]
+    }
+  ]
+}
+----
+
+[[code_usecase4]]
+=== Use Case 4: Move an EVSE Between Groups
+
+Move `DE*M11*E000003` from `group2` to `group1`.
+
+NOTE: There is no move API or instruction. We perform two API calls: first remove the EVSE from the source group, then add it to the target group.
+
+==== Step 1: Remove `DE*M11*E000003` from `group2`
+
+===== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+===== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group2",
+      "Evses": ["DE*M11*E000004"]
+    }
+  ]
+}
+----
+
+==== Step 2: Assign `DE*M11*E000003` to `group1`
+
+===== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+===== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group1",
+      "Evses": ["DE*M11*E000002", "DE*M11*E000003"]
+    }
+  ]
+}
+----
+
+[[code_usecase5]]
+=== Use Case 5: Duplicate EVSE Assignment Within a Group
+
+Trying to add `DE*M11*E000005` twice within the same group.
+
+NOTE: Our system handles this by adding only one instance of the EVSE and ignoring any duplicates without error or exception.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group2",
+      "Evses": ["DE*M11*E000004", "DE*M11*E000005", "DE*M11*E000005"]
+    }
+  ]
+}
+----
+
+[[code_usecase6]]
+=== Use Case 6: Assign an EVSE Already in Another Group
+
+We have `DE*M11*E000005` in `group2` and now we want to add `DE*M11*E000005` to `group1`.
+
+NOTE: The system will throw an exception because an EVSE cannot be assigned to multiple groups simultaneously.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group1",
+      "Evses": ["DE*M11*E000002", "DE*M11*E000003", "DE*M11*E000005"]
+    }
+  ]
+}
+----
+
+[[code_usecase7]]
+=== Use Case 7: Assign an Invalid or Non-Existent EVSE
+
+We would like to assign an invalid or non-existent EVSE. `DE*M11*E0000100000000` is not a valid EVSE.
+
+NOTE: The system will throw an exception.
+
+==== URL:
+
+----
+PUT /api/evsenetwork/v1/operators/DE*M11/network
+----
+
+==== Request Body:
+
+[source,JSON]
+----
+{
+  "NetworkName": "network1",
+  "GroupsAssignments": [
+    {
+      "GroupName": "group2",
+      "Evses": ["DE*M11*E000004", "DE*M11*E000005", "DE*M11*E0000100000000"]
+    }
+  ]
 }
 ----
